@@ -1,0 +1,95 @@
+* {
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font: inherit;
+    vertical-align: baseline;
+    clear: both;
+    font-family: Inter;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Inter;
+    src: url("../fonts/woff/Inter/Inter-Regular.woff2");
+}
+
+
+@font-face {
+    font-family: Inter-Regular;
+    src: url("../fonts/woff/Inter/Inter-Regular.woff2");
+}
+
+@font-face {
+    font-family: Inter-Medium;
+    src: url("../fonts/woff/Inter/Inter-Medium.woff2");
+}
+
+@font-face {
+    font-family: Inter-SemiBold;
+    src: url("../fonts/woff/Inter/Inter-SemiBold.woff2");
+}
+
+@font-face {
+    font-family: Inter-Bold;
+    src: url("../fonts/woff/Inter/Inter-Bold.woff2");
+    font-weight: 800;
+}
+
+@font-face {
+    font-family: Inter-Black;
+    src: url("../fonts/woff/Inter/Inter-Black.woff2");
+}
+
+html {
+    line-height: 1.15;
+    /* 1 */
+    -webkit-text-size-adjust: 100%;
+    /* 2 */
+}
+
+body {
+    margin: 0;
+    font-size: 16px;
+    line-height: 18px;
+    background: $colorBackground;
+}
+
+
+.fs-1 {
+    font-size: 3.5rem;
+}
+
+.fs-2 {
+    font-size: 3rem;
+}
+
+.fs-3 {
+    font-size: 2.5rem;
+}
+
+.fs-4 {
+    font-size: 2rem;
+}
+
+.fs-5 {
+    font-size: 1.5rem;
+}
+
+.fs-6 {
+    font-size: 1rem;
+}
+
+
+.contentServices {
+    display: flex;
+    max-width: 1320px;
+    margin: 6rem auto;
+
+}
+
+.word-break {
+    word-wrap: break-word;
+    word-break: break-all;
+}
