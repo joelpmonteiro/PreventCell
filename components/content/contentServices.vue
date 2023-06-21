@@ -61,10 +61,6 @@
 </template>
 
 <style lang="scss" scoped>
-section {
-    border: 1px solid red;
-}
-
 .content {
     gap: 5rem;
 

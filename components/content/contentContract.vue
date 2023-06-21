@@ -1,5 +1,5 @@
 <template>
-    <section class="callme">
+    <section class="callme mb-7">
 
         <div class="callme-content">
             <img src="~assets/img/call.svg" alt="ligue para PreventCell">

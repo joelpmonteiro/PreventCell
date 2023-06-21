@@ -7,9 +7,9 @@
 
                     <nav class="navigation">
                         <ul class="menu">
-                            <li class="item fs-6">
+                            <!-- <li class="item fs-6">
                                 <a href="">Home</a>
-                            </li>
+                            </li> -->
                             <li class="item fs-6">
                                 <a href="">Como Funciona</a>
                             </li>
@@ -87,7 +87,6 @@
 header {
     width: 100%;
     height: 100px;
-    border: 1px solid red;
     font-size: 1.5rem;
     line-height: 27px;
     padding: 1.25rem 0;
