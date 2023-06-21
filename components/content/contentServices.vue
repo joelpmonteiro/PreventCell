@@ -1,5 +1,5 @@
 <template>
-    <section class="contentServices">
+    <section class="content mb-5">
 
         <div class="titleWork">
             <div class="titleContent">
@@ -15,6 +15,48 @@
             </span>
         </div>
 
+        <div class="video">
+            <img src="../../assets/img/Video.svg" alt="video sobre PreventCell">
+        </div>
+
+        <div class="security">
+            <div class="security_description">
+                <h2 class="fs-5">Nós aumentamos a segurança de seus dispositivos móveis</h2>
+
+                <span class="">
+                    Ao emitir um alerta, o dispositivo é imediatamente bloqueado para acesso às suas contas impedindo
+                    redefinição de senhas e golpes bancários.
+                </span>
+            </div>
+
+
+            <div class="gridModelsMobile">
+                <div class="ios">
+                    <img src="~assets/img/ios.svg" alt="modelo ios">
+
+                    <div class="body">
+                        <span class="models_header">iOS</span>
+
+                        <div class="models_content word-break">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                        </div>
+                    </div>
+                </div>
+                <div class="android">
+                    <img src="~assets/img/android.svg" alt="modelo android">
+
+                    <div class="body">
+                        <span class="models_header">Android</span>
+
+                        <div class="models_content word-break">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </section>
 </template>
 
@@ -23,7 +65,9 @@ section {
     border: 1px solid red;
 }
 
-.contentServices {
+.content {
+    gap: 5rem;
+
     .titleWork {
         display: flex;
         flex-direction: column;
@@ -67,7 +111,7 @@ section {
         }
 
         span {
-            width: 80%;
+            width: 65%;
             font-style: normal;
             font-weight: 400;
             font-size: 20px;
@@ -78,6 +122,106 @@ section {
 
 
 
+    }
+
+    .video {
+        opacity: 0.7;
+        border-radius: 10px;
+        // margin-top: 2rem;
+    }
+
+    .security {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        gap: 81px;
+
+        .security_description {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            width: 100%;
+            height: auto;
+
+            h2 {
+                width: 50%;
+                color: $btnOutline;
+                font-style: normal;
+                font-weight: 600;
+                line-height: 26px;
+                text-transform: uppercase;
+                text-align: center;
+            }
+
+            span {
+                width: 60%;
+                color: white;
+                font-style: normal;
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 22px;
+                text-align: center;
+            }
+        }
+
+        .gridModelsMobile {
+            display: grid;
+            grid-template-columns: repeat(2, 405px);
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            height: auto;
+            margin: 0;
+
+            .ios {
+                display: flex;
+                align-items: flex-end;
+                gap: 32px;
+                background-color: $modelsMobile;
+                border-radius: 8px;
+                padding: 48px;
+
+            }
+
+            .android {
+                display: flex;
+                gap: 32px;
+                background-color: $modelsMobile;
+                border-radius: 8px;
+                padding: 48px;
+
+            }
+
+            .body {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0px 6px 0px 0px;
+                gap: 16px;
+
+                .models_header {
+                    color: $btnOutline;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 18px;
+                    line-height: 22px;
+                }
+
+                .models_content {
+                    width: 100%;
+                    color: $subtitleColor;
+                    font-style: normal;
+                    font-weight: 400;
+                    font-size: 14.5015px;
+                    line-height: 18px;
+                }
+            }
+        }
     }
 }
 </style>

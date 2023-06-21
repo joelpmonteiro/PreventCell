@@ -49,12 +49,12 @@
 
                 </div>
 
-                <div class="aboutMore">
+                <!-- <div class="aboutMore">
                     <a href="#">
                         Saiba mais
                         <LazyIconsSetUpIcons></LazyIconsSetUpIcons>
                     </a>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -226,30 +226,30 @@ header {
         }
     }
 
-    .aboutMore {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-end;
-        justify-content: center;
-        padding: 0px 16px;
-        margin-top: auto;
-        width: 100%;
-        height: auto;
-        margin: 1rem 0;
+    // .aboutMore {
+    //     display: flex;
+    //     flex-direction: row;
+    //     align-items: flex-end;
+    //     justify-content: center;
+    //     padding: 0px 16px;
+    //     margin-top: auto;
+    //     width: 100%;
+    //     height: auto;
+    //     margin: 1rem 0;
 
-        a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            letter-spacing: 0.05em;
-            color: #F4C527;
-            text-decoration: none;
-            text-align: center;
-            width: 179px;
-            height: 48px;
-        }
+    //     a {
+    //         display: flex;
+    //         align-items: center;
+    //         justify-content: center;
+    //         gap: 16px;
+    //         letter-spacing: 0.05em;
+    //         color: #F4C527;
+    //         text-decoration: none;
+    //         text-align: center;
+    //         width: 179px;
+    //         height: 48px;
+    //     }
 
-    }
+    // }
 }
 </style>
