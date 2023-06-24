@@ -1,13 +1,153 @@
 <template>
-    <section class="faq" style="color: white;">
+    <section class="faq" style="color: white;" id="duvidas">
         <div class="faq-title">
             <h3 class="fs-5">faq</h3>
             <h1 class="fs-4">Perguntas Frequentes</h1>
         </div>
 
         <div class="faq-description">
-            <div class="faq-column"></div>
-            <div class="faq-column"></div>
+            <div class="faq-column">
+                <ul>
+                    <li>
+                        <a href="" class="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+
+                </ul>
+
+            </div>
+            <div class="faq-column">
+                <ul>
+                    <li>
+                        <a href="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+                    <li>
+                        <a href="">
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
+                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
+                        </a>
+
+                        <div class="dropdown">
+                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+                            non numquam eius modi tempora incidunt ut.
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
 
 
         </div>
@@ -57,5 +197,84 @@
 
         }
     }
+
+    .faq-description {
+        display: inline-flex;
+        flex-wrap: wrap;
+        //grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        gap: 16px;
+        row-gap: 57px;
+        column-gap: 16px;
+        justify-content: center;
+        justify-items: center;
+        width: 100%;
+        height: 100%;
+        color: white;
+
+        .faq-column {
+            flex: 1 0 600px;
+            width: 616px;
+            height: 100%;
+
+            ul {
+                display: inline-flex;
+                flex-direction: column;
+                gap: 16px;
+                width: 100%;
+
+                li {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    list-style: none;
+                    padding: 12px 0;
+                    border-bottom: 1px solid #333333;
+
+                    a {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 16px;
+                        width: 100%;
+                        padding: 0px 27px 0px 0px;
+                        font-size: 18px;
+                        font-weight: 600;
+                        text-decoration: none;
+                        color: white;
+
+                        span {
+                            width: 100%;
+                        }
+                    }
+
+                    .dropdown {
+                        display: none;
+                        color: $subtitleColor;
+                    }
+                }
+            }
+        }
+    }
 }
+
+
+@media (min-width: 576px) {
+    .faq-description {}
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {}
+
+// X-Large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+    .faq-description {}
+}
+
+// XX-Large devices (larger desktops, 1400px and up)
+// @media (min-width: 1400px) { 
+
+// }
 </style>

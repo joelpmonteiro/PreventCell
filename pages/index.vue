@@ -4,6 +4,7 @@
         <LazyContentPartners></LazyContentPartners>
         <LazyContentContract></LazyContentContract>
         <LazyContentFAQ></LazyContentFAQ>
+        <LazyContentContactUs></LazyContentContactUs>
     </main>
 </template>
 

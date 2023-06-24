@@ -11,13 +11,18 @@
                                 <a href="">Home</a>
                             </li> -->
                             <li class="item fs-6">
-                                <a href="">Como Funciona</a>
+                                <!-- <a href="/#ComoFunciona">Como Funciona</a> -->
+                                <NuxtLink :to="{ path: '/', hash: '#ComoFunciona' }">Como Funciona</NuxtLink>
                             </li>
                             <li class="item fs-6">
-                                <a href="">Sobre Nós</a>
+                                <!-- <a href="#SobreNos">Sobre Nós</a> -->
+                                <NuxtLink :to="{ path: '/', hash: '#duvidas' }">Dúvidas</NuxtLink>
+
                             </li>
                             <li class="item fs-6">
-                                <a href="">Contato</a>
+                                <!-- <a href="#Contato">Contato</a> -->
+                                <NuxtLink :to="{ path: '/', hash: '#Contato' }">Contato</NuxtLink>
+
                             </li>
 
 
@@ -61,6 +66,8 @@
 </template>
 
 <script lang="ts">
+import path from 'path';
+
 </script>
 
 <style lang="scss" scoped>
@@ -134,6 +141,11 @@ header {
                         text-decoration: none;
                         color: #FBFBFB;
 
+                        &:hover {
+                            text-decoration: underline;
+                            text-underline-offset: 3px;
+
+                        }
                     }
 
                 }
@@ -151,16 +163,14 @@ header {
                 text-align: center;
                 text-transform: uppercase;
                 background: transparent;
-                color: white;
+                color: $btnOutline;
                 border: 0.75px solid $btnOutline;
-                box-shadow: #FBFBFB;
                 border-radius: 4px;
                 cursor: pointer;
 
                 &:hover {
-                    background-color: $btnOutline;
-                    // box-shadow: 2px 2px $btnOutline;
-                    color: black;
+                    background-color: rgba(244, 197, 39, 0.05);
+                    // box-shadow: 1px 1px $btnOutline;
                 }
             }
         }
@@ -185,6 +195,7 @@ header {
         width: 100%;
         height: 100%;
         gap: 27px;
+        margin-bottom: 2.5rem;
 
         h1.title {
             width: 50%;
@@ -214,15 +225,14 @@ header {
         width: 100%;
         height: 100%;
 
-
         .btn-primary {
-            background: linear-gradient(180deg, #F4CB2B 0%, #F4A513 100%);
-            border-radius: 4px;
-            padding: 12px 16px;
-            width: 206px;
-            height: 52px;
-            cursor: pointer;
+            font-family: Inter-Medium;
+            font-weight: 500;
+            line-height: 27.134px;
         }
+
+
+
     }
 
     // .aboutMore {

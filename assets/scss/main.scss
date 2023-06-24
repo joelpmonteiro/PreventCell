@@ -1,111 +1,165 @@
 * {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font: inherit;
-    vertical-align: baseline;
-    clear: both;
-    font-family: Inter;
-    box-sizing: border-box;
-}
-
-@font-face {
-    font-family: Inter;
-    src: url("../fonts/woff/Inter/Inter-Regular.woff2");
-}
-
-
-@font-face {
-    font-family: Inter-Regular;
-    src: url("../fonts/woff/Inter/Inter-Regular.woff2");
-}
-
-@font-face {
-    font-family: Inter-Medium;
-    src: url("../fonts/woff/Inter/Inter-Medium.woff2");
-}
-
-@font-face {
-    font-family: Inter-SemiBold;
-    src: url("../fonts/woff/Inter/Inter-SemiBold.woff2");
-}
-
-@font-face {
-    font-family: Inter-Bold;
-    src: url("../fonts/woff/Inter/Inter-Bold.woff2");
-    font-weight: 800;
-}
-
-@font-face {
-    font-family: Inter-Black;
-    src: url("../fonts/woff/Inter/Inter-Black.woff2");
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  clear: both;
+  font-family: Inter;
+  box-sizing: border-box;
 }
 
 html {
-    line-height: 1.15;
-    /* 1 */
-    -webkit-text-size-adjust: 100%;
-    /* 2 */
+  scroll-behavior: smooth;
+}
+
+// body {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   justify-content: center;
+//   width: 100%;
+//   height: 100%;
+// }
+
+@font-face {
+  font-family: Inter;
+  src: url("../fonts/woff/Inter/Inter-Regular.woff2");
+}
+
+@font-face {
+  font-family: Inter-Regular;
+  src: url("../fonts/woff/Inter/Inter-Regular.woff2");
+}
+
+@font-face {
+  font-family: Inter-Medium;
+  src: url("../fonts/woff/Inter/Inter-Medium.woff2");
+}
+
+@font-face {
+  font-family: Inter-SemiBold;
+  src: url("../fonts/woff/Inter/Inter-SemiBold.woff2");
+}
+
+@font-face {
+  font-family: Inter-Bold;
+  src: url("../fonts/woff/Inter/Inter-Bold.woff2");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: Inter-Black;
+  src: url("../fonts/woff/Inter/Inter-Black.woff2");
+}
+
+html {
+  line-height: 1.15;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
 }
 
 body {
-    margin: 0;
-    font-size: 16px;
-    line-height: 18px;
-    background: $colorBackground;
+  margin: 0;
+  font-size: 16px;
+  line-height: 18px;
+  background: $colorBackground;
 }
 
-
-
-
 .fs-1 {
-    font-size: 3.5rem;
+  font-size: 3.5rem;
 }
 
 .fs-2 {
-    font-size: 3rem;
+  font-size: 3rem;
 }
 
 .fs-3 {
-    font-size: 2.5rem;
+  font-size: 2.5rem;
 }
 
 .fs-4 {
-    font-size: 2rem;
+  font-size: 2rem;
 }
 
 .fs-5 {
-    font-size: 1.5rem;
+  font-size: 1.5rem;
 }
 
 .fs-6 {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
-
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    max-width: 1320px;
-    margin: 6rem auto;
-    padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1320px;
+  margin: 6rem auto;
+  padding: 0 2rem;
 }
 
 .word-break {
-    word-wrap: break-word;
-    word-break: break-all;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
 .mb-5 {
-    margin-bottom: 3rem;
+  margin-bottom: 3rem;
 }
 
 .mb-6 {
-    margin-bottom: 4rem;
+  margin-bottom: 4rem;
 }
 
 .mb-7 {
-    margin-bottom: 5rem;
+  margin-bottom: 5rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 1.5rem;
+}
+
+.mt-3 {
+  margin-top: 2rem;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #f4cb2b 0%, #f4a513 100%);
+  border-radius: 4px;
+  padding: 12px 16px;
+  width: 206px;
+  height: 52px;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+
+  cursor: pointer;
+
+  &:hover {
+    background: #dbb023;
+    /* Button */
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.img-fluid {
+  width: 100%;
+  height: auto;
+}
+
+footer {
+  width: 100%;
+  position: absolute;
+  height: 295px;
+  flex-shrink: 0;
+  background-color: $btnOutline;
 }

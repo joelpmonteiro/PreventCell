@@ -1,5 +1,5 @@
 <template>
-    <section class="content mb-5">
+    <section class="content mb-5" id="ComoFunciona">
 
         <div class="titleWork">
             <div class="titleContent">
@@ -16,7 +16,7 @@
         </div>
 
         <div class="video">
-            <img src="../../assets/img/Video.svg" alt="video sobre PreventCell">
+            <img class="img-fluid" src="../../assets/img/Video.svg" alt="video sobre PreventCell">
         </div>
 
         <div class="security">
@@ -165,8 +165,9 @@
         }
 
         .gridModelsMobile {
-            display: grid;
-            grid-template-columns: repeat(2, 405px);
+            display: flex;
+            flex-wrap: wrap;
+            //grid-template-columns: repeat(2, 405px);
             align-items: center;
             justify-content: center;
             gap: 15px;
@@ -176,20 +177,24 @@
 
             .ios {
                 display: flex;
+                flex: 1 2 50%;
                 align-items: flex-end;
                 gap: 32px;
                 background-color: $modelsMobile;
                 border-radius: 8px;
                 padding: 48px;
-
+                max-width: 405px;
             }
 
             .android {
                 display: flex;
+                flex: 1 2 50%;
                 gap: 32px;
                 background-color: $modelsMobile;
                 border-radius: 8px;
                 padding: 48px;
+                max-width: 405px;
+
 
             }
 

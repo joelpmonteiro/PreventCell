@@ -70,7 +70,9 @@
             height: 100%;
 
             .partners-item {
-                align-self: center;
+                display: flex;
+                align-items: center;
+                gap: 5px;
 
                 span {
                     color: $colorTextLogotipo;
