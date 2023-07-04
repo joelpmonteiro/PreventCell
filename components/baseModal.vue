@@ -1,9 +1,9 @@
 <template>
     <div id="modalProtect" class="modal">
-        <section class="modal-content">
+        <section class="modal-content" :style="typeModal">
 
             <div class="modal-close">
-                <button type="button" name="close" class="btn-close">
+                <button type="button" name="close" class="btn-close" @click="$emit('close-modal', false)">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
                             d="M13.9844 1.42188L8.40625 7L13.9844 12.5781L12.5781 13.9844L7 8.40625L1.42188 13.9844L0.015625 12.5781L5.59375 7L0.015625 1.42188L1.42188 0.015625L7 5.59375L12.5781 0.015625L13.9844 1.42188Z"
@@ -20,14 +20,19 @@
                 </div>
 
                 <div class="body">
-                    <form action="post" class="mb-2">
+                    <form action="post" class="mb-2" v-if="!actionBtn">
                         <slot name="body"></slot>
 
-                        <div class="btnBody">
+                        <div class="btnBody" v-if="!actionBtn">
                             <button type="submit" class="btnModal btn-primary text-uppercase"> {{ props.nameBtn }}</button>
                         </div>
                     </form>
+
+                    <slot name="body" v-else></slot>
+
                 </div>
+
+
 
                 <div class="modal-footer mb-4">
                     <slot name="footer"></slot>
@@ -44,12 +49,14 @@
 <script lang="ts" setup>
 const props = defineProps({
     nameBtn: { type: String, required: true },
+    actionBtn: { type: Boolean, required: true },
+    typeModal: { type: String, required: true }
 }) 
 </script>
 
 <style lang="scss" scoped>
 .modal {
-    display: block;
+    display: none;
     position: fixed;
     z-index: 2;
     padding-top: 80px;

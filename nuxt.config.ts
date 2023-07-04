@@ -5,6 +5,10 @@ export default defineNuxtConfig({
   // alias: {
   //   "@": resolve(__dirname, "/"),
   // },
+  modules: [
+    // ...
+    '@pinia/nuxt',
+  ],
 
   css: ["~/assets/scss/main.scss"],
   vite: {

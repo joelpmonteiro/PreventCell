@@ -1,70 +1,6 @@
 <template>
     <main>
-        <LazyBaseModal :nameBtn="'Criar Conta'">
-            <template v-slot:header>
-                <div class="welcome">
-                    <h1 class="fs-4 text-uppercase">Bem-Vindo</h1>
-                    <span>Registre-se para criar uma conta e proteger seus acessos</span>
-                </div>
-            </template>
-            <template v-slot:body>
-                <div class="card-body">
-                    <div class="form-input">
-                        <input type="text" placeholder="Email*">
-                    </div>
 
-                    <div class="form-input">
-                        <input type="text" placeholder="CPF*">
-                    </div>
-
-                    <div class="form-group">
-                        <input type="text" placeholder="Senha*">
-                        <span>Deve conter no mínimo 6 dígitos</span>
-
-                        <div class="forgotPassword">
-                            <a href=""><span class="text-uppercase">Esqueceu a senha?</span></a>
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="form-check">
-                    <div class="check">
-                        <input type="checkbox" name="validForm" id="validForm" />
-                    </div>
-
-                    <span>Li e aceito os Termos de Uso e Política de Privacidade</span>
-                </div>
-
-            </template>
-
-            <template v-slot:footer="">
-                <div class="diviser">
-                    <hr />
-                    <span>Ou acesse com</span>
-                    <hr />
-                </div>
-
-                <div class="socialsBtn">
-                    <button type="button" class="btnSocials">
-                        <img src="../assets/img/apple.svg" alt="apple" width="24px" height="24px" />
-
-                        Apple
-                    </button>
-                    <button type="button">
-                        <img src="../assets/img/google.svg" alt="google" width="24px" height="24px" />
-                        Google
-                    </button>
-                </div>
-
-            </template>
-
-            <template v-slot:mini_footer>
-                <div class="already">
-                    <span>Já tem conta? Faça <a href="#">login</a> </span>
-                </div>
-            </template>
-        </LazyBaseModal>
         <LazyContentServices></LazyContentServices>
         <LazyContentPartners></LazyContentPartners>
         <LazyContentContract></LazyContentContract>
@@ -75,12 +11,16 @@
     </main>
 </template>
 
-<script lang="ts"></script>
+<script lang="ts" setup>
+</script>
 
 <style lang="scss">
 main {
     display: block;
 }
+
+
+
 
 .welcome {
     display: flex;

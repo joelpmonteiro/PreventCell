@@ -27,7 +27,8 @@
 
 
                         </ul>
-                        <button class="btn-login fs-6" type="button">Minha Conta</button>
+                        <button class="btn-login fs-6" type="button" @click.prevent="$emit('open-modal-login', true)">Minha
+                            Conta</button>
                     </nav>
 
 
@@ -48,7 +49,7 @@
                 </div>
 
                 <div class="btn-protect">
-                    <button type="button" class="btn-primary">
+                    <button type="button" class="btn-primary" @click="$emit('open-btn', true)">
                         Quero me Proteger
                     </button>
 
@@ -65,9 +66,7 @@
     </div>
 </template>
 
-<script lang="ts">
-import path from 'path';
-
+<script lang="ts" setup>
 </script>
 
 <style lang="scss" scoped>
