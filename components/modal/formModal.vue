@@ -1,6 +1,7 @@
 <template >
-    <LazyBaseModal :nameBtn="'Criar Conta'" :actionBtn="sucessAccount" :typeModal="'confirmAccount'"
-        :class="[openModal ? classModal : '']" @close-modal="$emit('close-modal', false)">
+    <LazyBaseModal :nameBtn="'Criar Conta'" :checkBtnValid="checkValid" :actionBtn="sucessAccount"
+        :typeModal="'confirmAccount'" @form-action="createRegister" :class="[openModal ? classModal : '']"
+        @close-modal="closeModal">
         <!-- Criar conta-->
         <template v-slot:header v-if="!sucessAccount">
             <div class="welcome">
@@ -22,15 +23,15 @@
         <template v-slot:body v-if="!sucessAccount">
             <div class="card-body">
                 <div class="form-input">
-                    <input type="text" placeholder="Email*">
+                    <input type="text" placeholder="Email*" v-model="email">
                 </div>
 
                 <div class="form-input">
-                    <input type="text" placeholder="CPF*">
+                    <input type="text" placeholder="CPF*" v-model="cpf">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" placeholder="Senha*">
+                    <input type="password" placeholder="Senha*" v-model="password">
                     <span>Deve conter no mínimo 6 dígitos</span>
 
                     <div class="forgotPassword">
@@ -42,7 +43,7 @@
             </div>
             <div class="form-check">
                 <div class="check">
-                    <input type="checkbox" name="validForm" id="validForm" />
+                    <input type="checkbox" v-model="checkValid" name="validForm" id="validForm" />
                 </div>
 
                 <span>Li e aceito os Termos de Uso e Política de Privacidade</span>
@@ -108,18 +109,77 @@
 </template>
 
 <script lang="ts" setup>
+import { useToast, POSITION } from "vue-toastification";
+import useHandler from "~/composables/composablesServices";
+
+//useCallHandler
+const { createAccount } = useHandler()
 
 defineProps<{
     classModal: string
     openModal: boolean,
-
 }>();
 
+//emit
+const emit = defineEmits(['close-modal'])
+
+const toast = useToast();
+const password = ref<string>("");
+const cpf = ref<string>("")
+const email = ref<string>("");
+const checkValid = ref<boolean>(false)
+
 //variable
-const sucessAccount = ref(true)
+const sucessAccount = ref(false)
+
+//Callfunction
+async function createRegister(form: any) {
+    try {
+        const data = await createAccount({
+            docId: cpf.value,
+            psswd: password.value,
+            email: email.value,
+        });
+
+        toast.success("Cadastro feito com sucesso", {
+            timeout: 2000,
+            position: POSITION.TOP_RIGHT
+        });
 
 
+        setTimeout(() => {
+            form.reset();
+            emptyValue()
+            sucessAccount.value = true
+        }, 800)
+    } catch (error: any) {
 
+        if (error.response !== undefined) {
+            const { _data: data } = error.response;
+
+            if (error.response.status === 500 && data.trace.code === "23505") {
+                alert("Email ou o CPF já existe!")
+            } else {
+                alert('Error em nosso sistema')
+            }
+        } else {
+            alert('Erro')
+        }
+
+    }
+}
+
+const emptyValue = () => {
+    cpf.value = ''
+    password.value = ''
+    email.value = ''
+}
+
+const closeModal = () => {
+    //$emit('close-modal', false)
+    emit('close-modal', false);
+    sucessAccount.value = false;
+}
 
 </script>
 

@@ -9,7 +9,10 @@ export default defineNuxtConfig({
     // ...
     '@pinia/nuxt',
   ],
-
+  build: {
+    // vue-toastification - old commonjs module 
+    transpile: ['vue-toastification'],
+  },
   css: ["~/assets/scss/main.scss"],
   vite: {
     css: {

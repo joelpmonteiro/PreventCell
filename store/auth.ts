@@ -2,29 +2,33 @@
 import { defineStore } from "pinia";
 import { IUseAuthStore } from "../interfaces/IUseAuthStore";
 
+const api = 'http://localhost:3333/Prod'
 
 export const useStore = defineStore("authenticated", () => {
-    const authenticated = ref<boolean>();
-    const loading = ref<boolean>();
-    async function actionAuthen({ username, cpf, password }: IUseAuthStore) {
-        try {
-            const { status, data }: any = await useFetch("", {
-                method: "POST",
-                headers: { "Content-Type": "application/" },
-                body: { username, cpf, password },
-            });
-            loading.value = status;
+    const authenticated = ref<boolean>(false);
+    const loading = ref<boolean>(false);
+    const message = ref<string>("");
+    const errorHandler = ref<any>()
+    async function actionAuthen(userLogin: IUseAuthStore) {
 
-            if (data.value) {
-                const token = useCookie('token'); // useCookie new hook in nuxt 3
-                token.value = data?.value?.token; // set token to cookie
-                authenticated.value = true; // set authenticated  state value to true
-            }
-        } catch (error) {
-            console.log(error);
+        console.log('pinia login', userLogin)
+        const { data, error, execute, refresh, status }: any = await useFetch(`${api}/login/authenticate`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: userLogin
+        });
+        //loading.value = status;
+        if (data.value) {
+            const token = useCookie('token');
+            token.value = data?.value?.token;
+            authenticated.value = true;
+            message.value = `Login feito com sucesso! ${data?.message}`
+            errorHandler.value = error;
         }
+
+
     }
 
-    return { actionAuthen, authenticated, loading }
+    return { actionAuthen, authenticated, loading, message, errorHandler }
 
 });

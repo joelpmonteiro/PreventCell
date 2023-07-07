@@ -20,11 +20,13 @@
                 </div>
 
                 <div class="body">
-                    <form action="post" class="mb-2" v-if="!actionBtn">
+                    <form action="post" @submit.prevent="$emit('form-action', form)" ref="form" class="mb-2"
+                        v-if="!actionBtn">
                         <slot name="body"></slot>
 
                         <div class="btnBody" v-if="!actionBtn">
-                            <button type="submit" class="btnModal btn-primary text-uppercase"> {{ props.nameBtn }}</button>
+                            <button type="submit" class="btnModal btn-primary text-uppercase" :disabled="!checkBtnValid"> {{
+                                props.nameBtn }}</button>
                         </div>
                     </form>
 
@@ -50,8 +52,15 @@
 const props = defineProps({
     nameBtn: { type: String, required: true },
     actionBtn: { type: Boolean, required: true },
-    typeModal: { type: String, required: true }
-}) 
+    typeModal: { type: String, required: true },
+    checkBtnValid: { type: Boolean, default: false },
+})
+
+//define emits
+defineEmits(['form-action', 'close-modal']);
+
+//ref for empty Form
+const form = ref()
 </script>
 
 <style lang="scss" scoped>

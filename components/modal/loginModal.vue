@@ -1,5 +1,6 @@
 <template >
-    <LazyBaseModal :nameBtn="'Entrar'" :actionBtn="false" :class="[openModal ? classModal : '']" :typeModal="'height:594px'"
+    <LazyBaseModal :nameBtn="'Entrar'" :checkBtnValid="availableProps" :actionBtn="false"
+        :class="[openModal ? classModal : '']" @form-action="login" :typeModal="'height:594px'"
         @close-modal="$emit('close-modal', false)">
         <template v-slot:header>
             <div class="welcome">
@@ -11,11 +12,11 @@
             <div class="card-body">
 
                 <div class="form-input">
-                    <input type="text" placeholder="CPF*">
+                    <input type="text" placeholder="CPF*" v-model="cpf">
                 </div>
 
                 <div class="form-group">
-                    <input type="text" placeholder="Senha*">
+                    <input type="text" placeholder="Senha*" v-model="psswd">
                     <span>Deve conter no mínimo 6 dígitos</span>
 
                     <div class="forgotPassword">
@@ -36,6 +37,14 @@
 </template>
 
 <script lang="ts" setup>
+//useStore
+import { useStore } from '../../store/auth';
+import { useToast, POSITION } from "vue-toastification";
+
+//toast
+const toast = useToast();
+
+const { actionAuthen, authenticated, loading, message } = useStore()
 
 defineProps<{
     classModal: string
@@ -44,7 +53,38 @@ defineProps<{
 }>();
 
 
+const cpf = ref<string>("");
+const psswd = ref<string>("");
 
 
+//computed properties
+const availableProps = computed(() => {
+    return ((cpf.value !== '' && cpf.value !== undefined) && ((psswd.value !== '' && psswd.value !== undefined) && psswd.value.length >= 6) ? true : false)
+})
+
+//callfunction
+const login = async (form: any) => {
+    try {
+        await actionAuthen({ docId: cpf.value, psswd: psswd.value });
+
+        toast.success(message, {
+            timeout: 2000,
+            position: POSITION.TOP_RIGHT
+        });
+
+        setTimeout(() => { emptyValue() }, 800)
+    } catch (error) {
+        console.log(error);
+        toast.error("Erro ao efetuar login", {
+            timeout: 2000,
+            position: POSITION.TOP_RIGHT
+        });
+    }
+}
+
+const emptyValue = () => {
+    cpf.value = ''
+    psswd.value = ''
+}
 
 </script>
