@@ -44,8 +44,8 @@
                     </div>
 
                     <div class="btn-save mt-3">
-                        <button type="submit" class="btn-primary text-uppercase fs-6" name="saveform">Envie sua
-                            dúvida</button>
+                        <button type="submit" class="btn-primary text-uppercase fs-6" name="saveform">Enviar
+                            Mensagem</button>
                     </div>
                 </form>
             </div>
@@ -177,6 +177,42 @@
             }
         }
 
+    }
+}
+
+@media (max-width: 600px) {
+    .content {
+        margin: 6rem 0 auto;
+        padding: 0;
+
+        .cardContact {
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            padding: 41px 1rem;
+
+            .cardCallMe {
+                align-items: center;
+            }
+
+            .cardForm {
+                width: 100%;
+
+                &>form {
+                    width: 100%;
+                    height: auto;
+
+                    &>.btn-save {
+                        width: 222px;
+
+                        &>.btn-primary {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 </style>

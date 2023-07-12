@@ -225,4 +225,115 @@
         }
     }
 }
+
+@media(max-width: 600px) {
+    .content {
+        padding: 0;
+
+        &>.titleWork {
+            gap: 24px;
+            padding: 0 1rem;
+
+            &>span {
+                width: 100%;
+                font-size: 16px;
+                font-weight: 400;
+                line-height: normal;
+                letter-spacing: 0.035px;
+                text-align: start;
+                padding: 0 .75rem;
+
+                &.word-break {
+                    word-break: break-word;
+                    word-wrap: break-word;
+                }
+            }
+
+            &>.titleContent {
+                gap: 8px;
+                height: auto;
+
+
+
+                &>h3 {
+                    color: rgba(255, 255, 255, 0.70);
+                    font-size: 18px;
+                    font-weight: 500;
+                    letter-spacing: 0.035px;
+                    font-variant: normal;
+                }
+
+                &>h2 {
+                    font-size: 20px;
+                    font-weight: 600;
+                    line-height: normal;
+                    letter-spacing: 0.15px;
+                }
+            }
+        }
+
+        &>.security {
+            gap: 56px;
+            padding: 0 16px;
+
+            &>.security_description {
+                &>h2 {
+                    width: 100%;
+                    font-size: 18px;
+                    letter-spacing: 1.1px;
+                }
+
+                &>span {
+                    width: 100%;
+                    color: rgba(255, 255, 255, 0.70);
+                    font-size: 16px;
+                    letter-spacing: 0.154px;
+                    text-align: start;
+                }
+            }
+
+            &>.gridModelsMobile {
+                &>.ios {
+                    padding: 42.43px;
+                    align-items: center;
+                    gap: 28px;
+
+                    &>img {
+                        width: 63.644px;
+                        height: 63.644px;
+                    }
+
+                    &>.body {
+                        .models_content {
+                            color: rgba(255, 255, 255, 0.70);
+                            font-size: 12px;
+                            font-weight: 500;
+                            letter-spacing: 0.354px;
+                        }
+                    }
+                }
+
+                &>.android {
+                    padding: 42.43px;
+                    align-items: center;
+                    gap: 28px;
+
+                    &>img {
+                        width: 63.644px;
+                        height: 63.644px;
+                    }
+
+                    &>.body {
+                        .models_content {
+                            color: rgba(255, 255, 255, 0.70);
+                            font-size: 12px;
+                            font-weight: 500;
+                            letter-spacing: 0.354px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
 </style>

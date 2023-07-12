@@ -162,11 +162,11 @@
 .faq {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
     gap: 5rem;
     width: 100%;
     height: 100%;
-    padding: 0 6rem;
 
     .faq-title {
         display: flex;
@@ -194,6 +194,9 @@
         h1 {
             font-weight: 700;
             line-height: 35px;
+            text-align: center;
+            letter-spacing: 0.25px;
+
 
         }
     }
@@ -203,13 +206,14 @@
         flex-wrap: wrap;
         //grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
         gap: 16px;
-        row-gap: 57px;
+        // row-gap: 57px;
         column-gap: 16px;
         justify-content: center;
         justify-items: center;
         width: 100%;
         height: 100%;
         color: white;
+        padding: 0 6rem;
 
         .faq-column {
             flex: 1 0 600px;
@@ -258,8 +262,49 @@
 }
 
 
-@media (min-width: 576px) {
-    .faq-description {}
+@media (max-width: 600px) {
+    .faq {
+        gap: 30px;
+
+        .faq-title {
+            &>h3 {
+                color: rgba(255, 255, 255, 0.70);
+                font-size: 1rem;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: 1.1px;
+            }
+
+            &>h1 {
+                letter-spacing: 1.1px;
+                line-height: normal;
+                font-size: 1.25rem;
+                font-weight: 600;
+            }
+        }
+
+        .faq-description {
+            padding: 0 16px;
+
+            .faq-column {
+                flex: 1 0 auto;
+                width: 100%;
+
+                &>ul {
+                    &>li {
+                        &>a {
+                            span {
+                                font-size: 16px;
+                                font-weight: 600;
+                                letter-spacing: 0.15px;
+                                line-height: 1.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 // Medium devices (tablets, 768px and up)
@@ -269,9 +314,7 @@
 @media (min-width: 992px) {}
 
 // X-Large devices (large desktops, 1200px and up)
-@media (min-width: 1200px) {
-    .faq-description {}
-}
+@media (min-width: 1200px) {}
 
 // XX-Large devices (larger desktops, 1400px and up)
 // @media (min-width: 1400px) { 

@@ -171,4 +171,61 @@
         }
     }
 }
+
+@media (max-width: 600px) {
+    footer {
+        height: 665px;
+
+        .content-footer {
+            .footer-navigation {
+                flex-direction: column;
+                gap: 30px;
+                height: auto;
+                padding: 0 16px;
+
+                .nav {
+                    flex-direction: column;
+                    height: 100%;
+                    gap: 8px;
+                    row-gap: 8px;
+
+                    .item-menu {
+                        padding: 8px 0px;
+                    }
+                }
+
+                .media-socials {
+                    justify-content: center;
+                    padding-bottom: 40px;
+                }
+            }
+
+            &>hr {
+                background: #4F4F4F;
+
+            }
+
+            .copyright {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+                padding: 1.375rem 0;
+
+                .text-uppercase {
+                    &>span {
+                        color: rgba(0, 0, 0, 0.87);
+                        font-size: 16px;
+                        letter-spacing: 0.7px;
+                    }
+                }
+
+                &>div>span {
+                    color: rgba(0, 0, 0, 0.87);
+                    font-size: 16px;
+                    letter-spacing: 0.7px;
+                }
+            }
+        }
+    }
+}
 </style>
