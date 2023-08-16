@@ -180,7 +180,7 @@
                 flex: 1 2 50%;
                 align-items: flex-end;
                 gap: 32px;
-                background-color: $modelsMobile;
+                background-color: #0A1F2D;
                 border-radius: 8px;
                 padding: 48px;
                 max-width: 405px;
@@ -190,7 +190,7 @@
                 display: flex;
                 flex: 1 2 50%;
                 gap: 32px;
-                background-color: $modelsMobile;
+                background-color: #0A1F2D;
                 border-radius: 8px;
                 padding: 48px;
                 max-width: 405px;

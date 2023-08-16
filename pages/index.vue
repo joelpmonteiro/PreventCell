@@ -12,6 +12,9 @@
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+    layout: "default",
+});
 </script>
 
 <style lang="scss">
@@ -64,11 +67,20 @@ main {
 
         input {
             height: 48px;
-
-            padding: 10px 12px 10px 12px;
+            padding: 12px 12px 0 12px;
             border-radius: 4px;
-            border: 0.75px solid var(--grey-grey-1, #333);
-            background: var(--grey-grey-1, #333);
+            border: 0.75px solid $inputColorBackground;
+            background: $inputColorBackground;
+            color: white;
+
+            &:focus {
+                outline: none;
+            }
+
+            &:focus-visible {
+                border: .135rem solid #687680;
+
+            }
         }
 
         span {
@@ -120,15 +132,71 @@ main {
         padding: 14px 14px 13px 13px;
         justify-content: center;
         align-items: center;
+        cursor: pointer;
 
         input {
             border-radius: 2px;
             width: 17px;
             height: 17px;
+            appearance: none;
+            cursor: pointer;
 
             &:checked {
                 background: transparent;
             }
+
+            &::before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 17px;
+                height: 17px;
+                top: 0;
+                left: 0;
+                background-color: transparent;
+                border: 1px solid rgba(189, 189, 189, 1);
+                border-radius: 2px;
+
+
+            }
+
+            &:checked:before {
+                content: "";
+                display: block;
+                position: absolute;
+                width: 17px;
+                height: 17px;
+                top: 0;
+                left: 0;
+                border-radius: 2px;
+                border: 1px solid $inputChecked;
+                background: $inputChecked;
+            }
+
+            &:checked:after {
+                content: "";
+                display: block;
+                width: 5px;
+                height: 10px;
+                border: solid white;
+                border-width: 0 2px 2px 0;
+                -webkit-transform: rotate(45deg);
+                -ms-transform: rotate(45deg);
+                transform: rotate(45deg);
+                position: absolute;
+                top: 2px;
+                left: 6px;
+            }
+
+            // &:hover {
+            //     background-color: rgba(235, 235, 235, 0.05);
+            //     border-radius: 50%;
+            // }
+        }
+
+        &:hover {
+            background-color: rgba(235, 235, 235, 0.05);
+            border-radius: 50%;
         }
 
 
@@ -200,6 +268,8 @@ main {
 
     a {
         color: white;
+        text-decoration: underline;
+        cursor: pointer;
     }
 }
 </style>

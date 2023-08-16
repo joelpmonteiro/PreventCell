@@ -1,7 +1,7 @@
 <template >
     <LazyBaseModal :nameBtn="'Criar Conta'" :checkBtnValid="checkValid" :actionBtn="sucessAccount"
-        :typeModal="'confirmAccount'" @form-action="createRegister" :class="[openModal ? classModal : '']"
-        @close-modal="closeModal">
+        :typeModal="sucessAccount ? 'confirmAccount' : ''" @form-action="createRegister"
+        :class="[openModal ? classModal : '']" @close-modal="closeModal">
         <!-- Criar conta-->
         <template v-slot:header v-if="!sucessAccount">
             <div class="welcome">
@@ -13,9 +13,15 @@
         <!-- Confirmar Conta-->
         <template v-slot:header v-else>
             <div class="welcome">
-                <h1 class="fs-4 text-uppercase">Verifique seu e-mail</h1>
-                <span>Enviamos um e-mail com as instruções para verificar sua conta. Se não encontrar na caixa de entrada,
-                    verifique a caixa de spam.</span>
+                <div class="">
+                    <img width="109" height="109" src="assets/img/Email_capture-amico.svg"
+                        alt="confirme o email PreventCell">
+                </div>
+                <span class="code-verify">Digite o código de verificação</span>
+                <span>
+                    Enviamos um e-mail com um código de 6 dígitos para verificar sua conta.
+                    Se não encontrar na caixa de entrada, verifique a caixa de spam.
+                </span>
             </div>
         </template>
 
@@ -23,15 +29,25 @@
         <template v-slot:body v-if="!sucessAccount">
             <div class="card-body">
                 <div class="form-input">
-                    <input type="text" placeholder="Email*" v-model="email">
+                    <label class="label_floating" for="email">
+                        <input type="text" id="email" name="email" v-model="email" placeholder=" " required>
+                        <span class="span_floating">E-mail*</span>
+                    </label>
                 </div>
 
                 <div class="form-input">
-                    <input type="text" placeholder="CPF*" v-model="cpf">
+                    <label class="label_floating" for="cpf">
+                        <input type="text" placeholder=" " name="cpf" id="cpf" v-maska data-maska="['###.###.###-##']"
+                            v-model="cpf" required>
+                        <span class="span_floating">CPF*</span>
+                    </label>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" placeholder="Senha*" v-model="password">
+                    <label class="label_floating" for="password">
+                        <input type="password" placeholder=" " name="password" id="password" v-model="password" required>
+                        <span class="span_floating">Senha*</span>
+                    </label>
                     <span>Deve conter no mínimo 6 dígitos</span>
 
                     <div class="forgotPassword">
@@ -53,8 +69,30 @@
 
         <!-- Confirmar Conta-->
         <template v-slot:body v-else>
-            <div class="card-body align-items">
-                <img width="230" height="229" src="assets/img/Email_capture-amico.svg" alt="confirme o email PreventCell">
+            <div class="card-body row">
+                <div class="form-input-max-number">
+                    <input :ref="nextTickInput" type="text" v-model="checkCode.in0" :maxlength="1" @input="fnextInput(1)">
+                </div>
+
+                <div class="form-input-max-number">
+                    <input :ref="nextTickInput" type="text" v-model="checkCode.in1" :maxlength="1" @input="fnextInput(2)">
+                </div>
+
+                <div class="form-input-max-number">
+                    <input :ref="nextTickInput" type="text" v-model="checkCode.in2" :maxlength="1" @input="fnextInput(3)">
+                </div>
+
+                <div class="form-input-max-number">
+                    <input :ref="nextTickInput" type="text" v-model="checkCode.in3" :maxlength="1" @input="fnextInput(4)">
+                </div>
+
+                <div class="form-input-max-number">
+                    <input :ref="nextTickInput" type="text" v-model="checkCode.in4" :maxlength="1" @input="fnextInput(5)">
+                </div>
+
+                <div class="form-input-max-number">
+                    <input :ref="nextTickInput" type="text" v-model="checkCode.in5" @change="validaCode" :maxlength="1">
+                </div>
             </div>
 
             <div class="form-check flex-gap">
@@ -75,12 +113,12 @@
 
             <div class="socialsBtn">
                 <button type="button" class="btnSocials">
-                    <img src="assets/img/apple.svg" alt="apple" width="24px" height="24px" />
-
+                    <img loading="lazy" src="@/assets/Icon.png" alt="apple" width="24px" height="24px" />
                     Apple
                 </button>
+
                 <button type="button">
-                    <img src="assets/img/google.svg" alt="google" width="24px" height="24px" />
+                    <img loading="lazy" src="@/assets/Icon2.png" alt="google" width="24px" height="24px" />
                     Google
                 </button>
             </div>
@@ -95,7 +133,7 @@
         <!-- Criar conta-->
         <template v-slot:mini_footer v-if="!sucessAccount">
             <div class="already">
-                <span>Já tem conta? Faça <a href="#">login</a> </span>
+                <span>Já tem conta? Faça <a @click.prevent="$emit('open-child-modal', true)">login</a> </span>
             </div>
         </template>
 
@@ -127,16 +165,50 @@ const toast = useToast();
 const password = ref<string>("");
 const cpf = ref<string>("")
 const email = ref<string>("");
-const checkValid = ref<boolean>(false)
+const checkValid = ref<boolean>(false);
+
 
 //variable
 const sucessAccount = ref(false)
+const nextInput = ref<HTMLElement[]>([])
+const checkCode = ref<{
+    in0: number | string,
+    in1: number | string,
+    in2: number | string,
+    in3: number | string,
+    in4: number | string,
+    in5: number | string
+}>({
+    in0: '',
+    in1: '',
+    in2: '',
+    in3: '',
+    in4: '',
+    in5: '',
+})
 
 //Callfunction
+
+const nextTickInput = (el: any) => {
+    nextInput.value.push(el);
+}
+
+const fnextInput = (index: number) => {
+    nextInput.value[index].focus();
+    console.log(nextInput.value[index])
+    console.log(nextInput.value[index].focus())
+}
+
 async function createRegister(form: any) {
     try {
+        // if (cpf.value !== undefined || cpf.value !== null) {
+
+        // }
+
+        const cpfWithPoints: any = cpf.value.match(/\d/g)?.join("");
+
         const data = await createAccount({
-            docId: cpf.value,
+            docId: cpfWithPoints,
             psswd: password.value,
             email: email.value,
         });
@@ -158,17 +230,29 @@ async function createRegister(form: any) {
             const { _data: data } = error.response;
 
             if (error.response.status === 500 && data.trace.code === "23505") {
-                alert("Email ou o CPF já existe!")
+                toast.warning("Email ou o CPF já existe!", {
+                    timeout: 2000,
+                    position: POSITION.TOP_RIGHT
+                });
             } else {
-                alert('Error em nosso sistema')
+                toast.error("Error em nosso sistema", {
+                    timeout: 2000,
+                    position: POSITION.TOP_RIGHT
+                });
             }
         } else {
-            alert('Erro')
+            toast.error("Error ao criar conta!", {
+                timeout: 2000,
+                position: POSITION.TOP_RIGHT
+            });
         }
 
     }
 }
 
+async function validaCode() {
+    console.log(checkCode.value)
+}
 const emptyValue = () => {
     cpf.value = ''
     password.value = ''
@@ -187,12 +271,6 @@ const closeModal = () => {
 .verify_email {
     width: 100%;
     height: 100%;
-}
-
-.confirmAccount {
-    max-width: 690px;
-    height: 634px;
-
 }
 
 .align-items {
@@ -226,5 +304,44 @@ const closeModal = () => {
         }
     }
 
+}
+
+
+
+.card-body {
+    gap: 12px;
+
+    .form-input-max-number {
+        width: 50px;
+        height: 60.714px;
+
+        input {
+            text-align: center;
+            font-size: 2.5rem;
+            color: white;
+            width: 50px;
+            height: 60.714px;
+            border-radius: 4px;
+            background: $inputColorBackground;
+        }
+
+    }
+}
+
+.row {
+    flex-direction: row !important;
+    justify-content: center;
+}
+
+.welcome {
+    gap: 16px;
+
+    &>.code-verify {
+        font-family: Inter;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: normal;
+        letter-spacing: 1px;
+    }
 }
 </style>

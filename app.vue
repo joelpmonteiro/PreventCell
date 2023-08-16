@@ -1,14 +1,14 @@
 <template>
-  <div>
-    <NuxtLayout>
-      <NuxtPage />
-    </NuxtLayout>
-  </div>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
+
 <style lang="scss">
-// #__nuxt {
-//   max-width: 1920px;
-//   width: 100%;
-//   height: 100%;
-// }
+body {
+  margin: 0;
+  font-size: 16px;
+  line-height: 18px;
+  background-color: var(--background-body);
+}
 </style>

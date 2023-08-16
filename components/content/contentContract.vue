@@ -7,7 +7,7 @@
                     <img src="~assets/img/call.svg" alt="ligue para PreventCell">
 
                     <div class="phone fs-001">
-                        <span>(12) 3456-7890</span>
+                        <a>(12) 3456-7890</a>
                     </div>
                 </div>
                 <span class="subtitle">
@@ -59,7 +59,8 @@
                     letter-spacing: 0.05em;
 
 
-                    &>span {
+                    &>a {
+                        text-decoration: none;
                         color: $btnOutline;
                     }
                 }
@@ -112,8 +113,9 @@
                             letter-spacing: 1.2px;
                         }
 
-                        &>span {
-                            color: #FFCB42 !important;
+                        &>a {
+                            text-decoration: none;
+                            color: $btnOutline;
                         }
                     }
                 }

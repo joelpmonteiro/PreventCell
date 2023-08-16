@@ -14,14 +14,13 @@ html {
   scroll-behavior: smooth;
 }
 
-// body {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   justify-content: center;
-//   width: 100%;
-//   height: 100%;
-// }
+:root {
+  --background-body: #0A1F2D;
+}
+
+.color-green {
+  color: #27AE60;
+}
 
 @font-face {
   font-family: Inter;
@@ -71,12 +70,7 @@ span {
   color: inherit;
 }
 
-body {
-  margin: 0;
-  font-size: 16px;
-  line-height: 18px;
-  background: $colorBackground;
-}
+
 
 .fs-1 {
   font-size: 3.5rem;
@@ -156,6 +150,10 @@ body {
   text-transform: uppercase;
 }
 
+.text-capitalize {
+  text-transform: capitalize;
+}
+
 .btn-primary {
   background: #FFD342;
   border-radius: 4px;
@@ -172,6 +170,50 @@ body {
   }
 }
 
+.btn-secondary {
+  padding: 10px 20px;
+  flex: 1 0 0;
+  border-radius: 4px;
+  background: #0D4873;
+  box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.20);
+  color: white;
+  cursor: pointer;
+  min-height: 41px;
+
+  &:hover {
+    background: #0A385A;
+  }
+}
+
+.btn-red {
+  background: #B11;
+}
+
+.btn-secondary-outline {
+  padding: 10px 20px;
+  flex: 1 0 0;
+  border-radius: 4px;
+  background: transparent;
+  cursor: pointer;
+  min-height: 41px;
+  color: $btnColorSecondary;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 150%;
+  letter-spacing: 1.25px;
+
+  &:hover {
+    color: black;
+    text-decoration: underline;
+  }
+}
+
+.btn-color-secondary {
+  background: $btnColorSecondary;
+}
+
+
+
 .active {
   display: block !important;
 }
@@ -186,5 +228,119 @@ footer {
   position: absolute;
   height: 295px;
   flex-shrink: 0;
+
+  .copyright {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
+    padding: 1.375rem 6rem;
+
+
+
+    div {
+      flex: 1;
+
+      span {
+        color: #333;
+        letter-spacing: 0.7px;
+      }
+    }
+  }
+}
+
+.background-footer-primary {
   background-color: $btnOutline;
+}
+
+.background-footer-secondary {
+  background-color: red;
+}
+
+.font-swal {
+  color: rgba(0, 0, 0, 0.60);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: 0.25px;
+}
+
+.pinblock-swal {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  padding: 16px 0;
+
+  h2 {
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 30px;
+    /* 30px */
+    letter-spacing: 0.25px;
+  }
+}
+
+.swal2-html-container {
+  span {
+    color: rgba(0, 0, 0, 0.60);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0.25px;
+  }
+}
+
+.swal2-title {
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0.15px;
+}
+
+.label_floating {
+  width: 100%;
+  cursor: text;
+
+  input {
+    width: 100%;
+  }
+
+  &>.span_floating {
+    position: absolute;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    top: 0.8rem;
+    left: 0.75rem;
+    padding: 0;
+    transition: top .2s;
+  }
+
+  >input:focus+.span_floating {
+    top: 0;
+    font-size: 0.7rem;
+    margin-bottom: 32px;
+
+  }
+
+  >input:not(:placeholder-shown)~.span_floating {
+    top: 0;
+    margin-bottom: 32px;
+    font-size: 0.7rem;
+  }
+
+  // >input:focus+.span_floating,
+  // >input:focus-visible+.span_floating {
+  //     top: 0;
+  //     font-size: 0.9375rem;
+  //     margin-bottom: 32px;
+
+  // }
 }

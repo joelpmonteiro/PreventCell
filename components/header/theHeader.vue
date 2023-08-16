@@ -1,50 +1,10 @@
 <template>
     <div class="blur">
         <div class="background_img">
-            <header>
-                <!-- <div class="navigation-menu"> -->
-                <a class="logo fs-4">PreventCell</a>
 
-                <nav class="navigation" :class="{ 'open': activeMenu }">
-                    <button id="btn-mobile" type="button" @click="changeActive">
-                        Menu
-                        <span id="hamburger"></span>
-                    </button>
-                    <ul class="menu">
-                        <button type="button" @click.prevent="activeMenu = !activeMenu" class="closeMenu">
-                            <img src="~assets/img/close-menu-mobile.svg" alt="close menu" />
-                        </button>
-                        <li class="item fs-6">
-                            <!-- <a href="/#ComoFunciona">Como Funciona</a> -->
-                            <a href="">Minha Conta</a>
-                        </li>
-
-                        <li class="item fs-6">
-                            <!-- <a href="/#ComoFunciona">Como Funciona</a> -->
-                            <NuxtLink :to="{ path: '/', hash: '#ComoFunciona' }">Como Funciona</NuxtLink>
-                        </li>
-                        <li class="item fs-6">
-                            <!-- <a href="#SobreNos">Sobre Nós</a> -->
-                            <NuxtLink :to="{ path: '/', hash: '#duvidas' }">Dúvidas</NuxtLink>
-
-                        </li>
-                        <li class="item fs-6">
-                            <!-- <a href="#Contato">Contato</a> -->
-                            <NuxtLink :to="{ path: '/', hash: '#Contato' }">Contato</NuxtLink>
-
-                        </li>
-
-
-                    </ul>
-                    <button class="btn-login fs-6" type="button" @click.prevent="$emit('open-modal-login', true)">Minha
-                        Conta</button>
-                </nav>
-
-
-                <!-- </div> -->
-
-            </header>
-
+            <LazyHeaderChildhead class="header-p" :layout="'default'" :styleTypeRouter="styleTypeRouter"
+                @open-child-modal="$emit('open-modal-login', true)">
+            </LazyHeaderChildhead>
             <div class="description">
                 <div class="text">
                     <h1 class="title fs-2">
@@ -76,20 +36,13 @@
 </template>
 
 <script lang="ts" setup>
-const activeMenu = ref<boolean>(false);
+const route = useRoute();
 
-//functions
-const changeActive = () => {
-    !activeMenu.value ? activeMenu.value = true : activeMenu.value = false;
-}
+const styleTypeRouter = computed(() => {
+    return route.path === '/register' ? { height: '96px', colorLogo: 'black' } : { height: '88px', colorLogo: 'white' };
+})
 </script>
-
-<style lang="scss" scoped>
-.closeMenu {
-    display: none;
-
-}
-
+<style lang="scss">
 .blur {
     width: 100%;
     height: 100%;
@@ -111,100 +64,8 @@ const changeActive = () => {
 
 }
 
-header {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.25rem;
-    width: 100%;
-    height: 100px;
-    font-size: 1.5rem;
-    line-height: 27px;
-
-    .logo {
-        color: white;
-        line-height: 27px;
-        font-weight: 500;
-    }
-
-    .navigation {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        gap: 40px;
-
-        .menu {
-            display: flex;
-            flex-direction: row;
-            align-items: flex-start;
-            padding: 0;
-            gap: 24px;
-            flex-grow: 0;
-
-            li.item {
-                position: relative;
-                list-style: none;
-                font-weight: 400;
-                line-height: 27px;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-
-                &:nth-child(1) {
-                    display: none;
-                }
-
-                a {
-                    text-decoration: none;
-                    color: #FBFBFB;
-
-                    &:hover {
-                        text-decoration: underline;
-                        text-underline-offset: 3px;
-
-                    }
-                }
-
-            }
-        }
-
-        .btn-login {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px 14px;
-            gap: 10px;
-            width: 147px;
-            height: 48px;
-            font-weight: 500;
-            text-align: center;
-            text-transform: uppercase;
-            background: transparent;
-            color: $btnOutline;
-            border: 0.75px solid $btnOutline;
-            border-radius: 4px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: rgba(244, 197, 39, 0.05);
-                // box-shadow: 1px 1px $btnOutline;
-            }
-        }
-    }
-
-    .navigation-menu {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 3rem 0 5rem;
-        height: 100%;
-
-
-    }
+.header-p {
+    padding: 0 88px;
 }
 
 .description {
@@ -270,100 +131,8 @@ header {
 
 }
 
-#btn-mobile {
-    display: none;
-}
-
 @media (max-width: 600px) {
 
-
-
-    #btn-mobile {
-        display: flex;
-        align-items: center;
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-        border: none;
-        background: none;
-        cursor: pointer;
-        color: white;
-        gap: 0.5rem;
-
-        #hamburger {
-            border-top: 2px solid;
-            width: 20px;
-        }
-
-        #hamburger::after,
-        #hamburger::before {
-            content: '';
-            display: block;
-            width: 20px;
-            height: 2px;
-            background: currentColor;
-            margin-top: 5px;
-            transition: 0.3s;
-            position: relative;
-        }
-    }
-
-    .btn-login {
-        display: none !important;
-    }
-
-    header {
-        padding: 16px;
-
-        .navigation {
-            margin-left: auto;
-
-            &.open {
-                .menu {
-
-                    height: 390px;
-                    visibility: visible;
-                    overflow-y: hidden;
-                    padding: 24px 16px;
-
-                }
-
-
-            }
-
-            .menu {
-                display: inline-flex;
-                flex-direction: column;
-                position: fixed;
-                width: 100%;
-                top: 0;
-                right: 0;
-                left: 0;
-                padding: 0px 16px;
-                background: $modelsMobile;
-                transition: 0.5s;
-                animation-delay: 1s;
-                animation: .5s;
-                z-index: 9999;
-                height: 0;
-                visibility: hidden;
-                overflow-y: hidden;
-
-                .closeMenu {
-                    display: flex !important;
-                    align-self: flex-end;
-                    background: transparent;
-                    padding: 12px;
-                    cursor: pointer;
-
-                    &>img {
-                        width: 16px;
-                        height: 16px;
-                    }
-                }
-            }
-        }
-
-    }
 
     .description {
         padding: 0 43px 0 16px;

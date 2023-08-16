@@ -1,160 +1,70 @@
 <template>
-    <section class="faq" style="color: white;" id="duvidas">
-        <div class="faq-title">
-            <h3 class="fs-5">faq</h3>
-            <h1 class="fs-4">Perguntas Frequentes</h1>
-        </div>
-
-        <div class="faq-description">
-            <div class="faq-column">
-                <ul>
-                    <li>
-                        <a href="" class="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-
-                </ul>
-
-            </div>
-            <div class="faq-column">
-                <ul>
-                    <li>
-                        <a href="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-                    <li>
-                        <a href="">
-                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit?</span>
-                            <img src="../../assets/img/IconSetPracima.svg" alt="abrir menu">
-                        </a>
-
-                        <div class="dropdown">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                            consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                            Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
-                            non numquam eius modi tempora incidunt ut.
-                        </div>
-                    </li>
-
-                </ul>
+    <ClientOnly>
+        <section class="faq" style="color: white;" id="duvidas">
+            <div class="faq-title">
+                <h3 class="fs-5">faq</h3>
+                <h1 class="fs-4">Perguntas Frequentes</h1>
             </div>
 
+            <div class="faq-description">
+                <div class="faq-column">
+                    <ul>
+                        <li :ref="li_active" v-for="(value, index) in array_separate(0, 3)" :key="index">
+                            <a @click.prevent="clickActive(index)">
+                                <span>{{ value.title }}</span>
 
-        </div>
-    </section>
+                                <img src="~/assets/img/expand_more01.svg" alt="abrir menu">
+                            </a>
+
+                            <div class="dropdown">
+                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
+                                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
+                                velit,
+                                {{ value.description }}
+                            </div>
+                        </li>
+
+                    </ul>
+
+                </div>
+                <div class="faq-column">
+                    <ul>
+                        <li :ref="li_active" v-for="(value, index) in array_separate(3, faqs.length)" :key="index">
+                            <a @click.prevent="clickActive(index + 3)">
+                                <span>{{ value.title }}</span>
+                                <!-- <img src="~/assets/img/IconSetPracima.svg" alt="abrir menu"> -->
+                                <img src="~/assets/img/expand_more01.svg" alt="abrir menu">
+                            </a>
+
+                            <div class="dropdown">
+                                {{ value.description }}
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+
+
+            </div>
+        </section>
+    </ClientOnly>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
+import { arrayFaqs } from '~/util/faqs';
+
+const faqs = ref<{ title: string, description: string }[]>(arrayFaqs);
+const liActive = ref<HTMLElement[]>([]);
+
+const li_active = (el: any) => { liActive.value.push(el) };
+//ending variable
+
+//function
+const clickActive = (index: any) => { liActive.value[index]?.classList.toggle(`active-li`) };
+
+const array_separate = (index: number, ending: number) => faqs.value.slice(index, ending)
+//ending function
 
 </script>
 
@@ -228,11 +138,31 @@
 
                 li {
                     display: flex;
+                    gap: 12px;
                     justify-content: center;
                     align-items: center;
                     list-style: none;
                     padding: 12px 0;
                     border-bottom: 1px solid #333333;
+
+                    &.active-li {
+                        flex-direction: column;
+                        height: auto;
+
+                        .dropdown {
+                            display: block;
+                            color: $subtitleColor;
+                        }
+
+                        a {
+                            img {
+                                width: 20px;
+                                height: 20 px;
+                                content: url('~/assets/img/IconSetPracima.svg');
+                                padding: 0;
+                            }
+                        }
+                    }
 
                     a {
                         display: flex;
@@ -245,9 +175,19 @@
                         font-weight: 600;
                         text-decoration: none;
                         color: white;
+                        cursor: pointer;
 
                         span {
                             width: 100%;
+                        }
+
+                        img {
+                            display: flex;
+                            width: 20px;
+                            height: 20px;
+                            justify-content: center;
+                            align-items: center;
+                            padding: 5px;
                         }
                     }
 

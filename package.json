@@ -16,8 +16,10 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "axios": "^1.4.0",
+    "maska": "^2.1.10",
     "pinia": "^2.1.4",
     "sass": "^1.63.4",
+    "sweetalert2": "^11.7.20",
     "vue-toastification": "^2.0.0-rc.5"
   }
 }

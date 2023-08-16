@@ -1,8 +1,11 @@
 <template>
     <div id="modalProtect" class="modal">
-        <section class="modal-content" :style="typeModal">
+        <section class="modal-content" :class="typeModal">
 
             <div class="modal-close">
+                <button type="button" name="close" class="btn-close-modal" @click="$emit('close-modal', false)">
+                    <img src="~/assets/img/close-menu-mobile-1.svg" alt="sair">
+                </button>
                 <button type="button" name="close" class="btn-close" @click="$emit('close-modal', false)">
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -26,7 +29,7 @@
 
                         <div class="btnBody" v-if="!actionBtn">
                             <button type="submit" class="btnModal btn-primary text-uppercase" :disabled="!checkBtnValid"> {{
-                                props.nameBtn }}</button>
+                                nameBtn }}</button>
                         </div>
                     </form>
 
@@ -49,12 +52,14 @@
 </template>
 
 <script lang="ts" setup>
-const props = defineProps({
+defineProps({
     nameBtn: { type: String, required: true },
     actionBtn: { type: Boolean, required: true },
     typeModal: { type: String, required: true },
     checkBtnValid: { type: Boolean, default: false },
 })
+
+
 
 //define emits
 defineEmits(['form-action', 'close-modal']);
@@ -75,7 +80,6 @@ const form = ref()
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
 
 
@@ -116,6 +120,10 @@ const form = ref()
                 font-size: 24px;
 
                 cursor: pointer;
+
+                &:nth-child(1) {
+                    display: none;
+                }
             }
         }
 
@@ -175,6 +183,50 @@ const form = ref()
             top: 0;
             opacity: 1
         }
+    }
+}
+
+.login-content {
+    height: 594px !important;
+}
+
+.confirmAccount {
+    max-width: 690px !important;
+    height: 634px !important;
+}
+
+@media screen and (max-width: 600px) {
+    .modal {
+        padding-top: 0px;
+
+        .modal-content {
+            height: 100dvh !important;
+
+            .modal-close {
+                flex-direction: row;
+                justify-content: space-between;
+                padding: 25px 50px 14.56px 30px;
+                height: auto;
+
+                button {
+                    align-self: center;
+                }
+
+                .btn-close-modal {
+                    display: flex !important;
+                    font-size: 40px;
+                    font-weight: 400;
+                }
+            }
+
+            .content-padding {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%;
+            }
+        }
+
     }
 }
 </style>
