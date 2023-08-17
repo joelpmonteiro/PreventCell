@@ -5,8 +5,8 @@ import { ICustomer } from "interfaces/IDevice";
 import { useToast, POSITION } from "vue-toastification";
 import { Router } from ".nuxt/vue-router";
 
-const api = "http://localhost:3333/Prod";
-
+//const api = "http://localhost:3333/Prod";
+const api = "https://hw1cepyr3g.execute-api.sa-east-1.amazonaws.com/Prod";
 const toast = useToast();
 
 export const useStore = defineStore("authenticated", () => {
@@ -79,7 +79,9 @@ export const useStore = defineStore("authenticated", () => {
           "Content-Type": "application/json",
         },
         body: {
-          docId: docId,
+          CustomerDetails: {
+            docId: docId,
+          }
         }, // body data type must match "Content-Type" header
       });
 
@@ -116,6 +118,7 @@ export const useStore = defineStore("authenticated", () => {
     useCookie('email').value = null;
     useCookie('cpf').value = null;
     useCookie('hasPin').value = null;
+    useCookie('phone').value = null;
     setTimeout(() => {
       router.push({
         path: '/'

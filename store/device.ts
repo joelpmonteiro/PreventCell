@@ -2,7 +2,8 @@ import { ICustomer, IDevice, IDeviceIncident } from "interfaces/IDevice";
 import { defineStore } from "pinia";
 import { useToast, POSITION } from "vue-toastification";
 
-const api = "http://localhost:3333/Prod";
+//const api = "http://localhost:3333/Prod";
+const api = "https://hw1cepyr3g.execute-api.sa-east-1.amazonaws.com/Prod";
 const toast = useToast();
 
 export const useDeviceStore = defineStore("device", () => {
@@ -25,9 +26,8 @@ export const useDeviceStore = defineStore("device", () => {
 
 
   async function getAllDeviceByDocId(docId: string) {
-    console.log('adasdsadasdasdasdasdasdasdsadasdasdasdasdasdasdasdasdasdasdasdasdasdas')
 
-    const { data }: any = await useAsyncData('device-security', () => $fetch(`${api}/device/find-device`, {
+    const data: any = await $fetch(`${api}/device/find-device`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,11 +35,10 @@ export const useDeviceStore = defineStore("device", () => {
       body: {
         docId: docId,
       }, // body data type must match "Content-Type" header
-    }));
+    });
 
-    console.log('useAsync: ', data)
-    if (data.value?.devices.length > 0) {
-      deviceArray.value = data.value?.devices.filter(
+    if (data?.devices.length > 0) {
+      deviceArray.value = data.devices.filter(
         (device: IDevice) => !device.isDeleted
       );
     }
@@ -48,7 +47,7 @@ export const useDeviceStore = defineStore("device", () => {
 
   async function getAllDeviceIncidentBy(docId: string) {
     try {
-      const { data }: any = await $fetch(`${api}/incident/find-incident`, {
+      const data: any = await $fetch(`${api}/incident/find-incident`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +59,7 @@ export const useDeviceStore = defineStore("device", () => {
         }, // body data type must match "Content-Type" header
       });
 
-      deviceArrayIncident.value = data.value["Incidents"];
+      deviceArrayIncident.value = data["Incidents"];
     } catch (error) {
       throw error;
     }
@@ -104,7 +103,6 @@ export const useDeviceStore = defineStore("device", () => {
   }
 
   async function addDeviceIncident(device: IDevice, cpf: string) {
-    console.log(device)
     await $fetch(`${api}/incident/create-incident`, {
       method: "POST",
       headers: {

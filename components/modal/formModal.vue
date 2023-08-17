@@ -14,7 +14,7 @@
         <template v-slot:header v-else>
             <div class="welcome">
                 <div class="">
-                    <img width="109" height="109" src="assets/img/Email_capture-amico.svg"
+                    <img width="109" height="109" src="~/assets/img/Email_capture-amico.svg"
                         alt="confirme o email PreventCell">
                 </div>
                 <span class="code-verify">Digite o código de verificação</span>
@@ -151,7 +151,7 @@ import { useToast, POSITION } from "vue-toastification";
 import useHandler from "~/composables/composablesServices";
 
 //useCallHandler
-const { createAccount } = useHandler()
+const { createAccount, validateAccount } = useHandler()
 
 defineProps<{
     classModal: string
@@ -159,7 +159,7 @@ defineProps<{
 }>();
 
 //emit
-const emit = defineEmits(['close-modal'])
+const emit = defineEmits(['close-modal', 'open-child-modal'])
 
 const toast = useToast();
 const password = ref<string>("");
@@ -170,6 +170,7 @@ const checkValid = ref<boolean>(false);
 
 //variable
 const sucessAccount = ref(false)
+const mailSave = useCookie('mailSave')
 const nextInput = ref<HTMLElement[]>([])
 const checkCode = ref<{
     in0: number | string,
@@ -195,8 +196,6 @@ const nextTickInput = (el: any) => {
 
 const fnextInput = (index: number) => {
     nextInput.value[index].focus();
-    console.log(nextInput.value[index])
-    console.log(nextInput.value[index].focus())
 }
 
 async function createRegister(form: any) {
@@ -212,6 +211,8 @@ async function createRegister(form: any) {
             psswd: password.value,
             email: email.value,
         });
+
+        mailSave.value = email.value
 
         toast.success("Cadastro feito com sucesso", {
             timeout: 2000,
@@ -251,7 +252,32 @@ async function createRegister(form: any) {
 }
 
 async function validaCode() {
-    console.log(checkCode.value)
+    if (checkCode.value.in0 && checkCode.value.in1 && checkCode.value.in2 && checkCode.value.in3 && checkCode.value.in4 && checkCode.value.in5) {
+        try {
+            const mail = useCookie('mailSave').value as string
+            await validateAccount({ email: mail, code: checkCode.value.in0 + "" + checkCode.value.in1 + "" + checkCode.value.in2 + "" + checkCode.value.in3 + "" + checkCode.value.in4 + "" + checkCode.value.in5 });
+            toast.success("Cadastro feito com sucesso", {
+                timeout: 2000,
+                position: POSITION.TOP_RIGHT
+            });
+            setTimeout(() => {
+                closeModal()
+                emit('open-child-modal', true)
+            }, 800)
+            useCookie('mailSave').value = null;
+        } catch (error) {
+            toast.error("Erro ao validar Conta!", {
+                timeout: 2000,
+                position: POSITION.TOP_RIGHT
+            })
+        }
+
+    } else {
+        toast.error("Preencha o campo corretamente!", {
+            timeout: 2000,
+            position: POSITION.TOP_RIGHT
+        })
+    }
 }
 const emptyValue = () => {
     cpf.value = ''

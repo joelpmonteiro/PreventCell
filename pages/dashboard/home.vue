@@ -11,11 +11,13 @@
       @handle-click-button="addDevice" :deviceLength="getDeviceProtectLength.length">
 
       <template v-slot:recently>
-        <LazySlideDevice :validHeaderCard="true" :msg-card-empty="'Adicione um dispositivo para proteger seus acessos'"
-          :validModalIncident="true" :data-device="getDeviceProtectLength" @edit-device="editDevice"
-          @close-all-modal="(event) => { closeBlurDeleteDevice = !event, editModalDevice = !event }"
-          @create-incident="createIncident">
-        </LazySlideDevice>
+        <ClientOnly>
+          <LazySlideDevice :validHeaderCard="true" :msg-card-empty="'Adicione um dispositivo para proteger seus acessos'"
+            :validModalIncident="true" :data-device="getDeviceProtectLength" @edit-device="editDevice"
+            @close-all-modal="(event) => { closeBlurDeleteDevice = !event, editModalDevice = !event }"
+            @create-incident="createIncident">
+          </LazySlideDevice>
+        </ClientOnly>
       </template>
 
     </LazyDashboardContentRegisterMobile>
@@ -26,9 +28,11 @@
       :deviceLength="getDeviceIncidentLength.length">
 
       <template v-slot:recently>
-        <LazySlideDevice :validHeaderCard="false" :msg-card-empty="'Você não tem dispositivos com incidente'"
-          :validModalIncident="true" :data-device="getDeviceIncidentLength">
-        </LazySlideDevice>
+        <ClientOnly>
+          <LazySlideDevice :validHeaderCard="false" :msg-card-empty="'Você não tem dispositivos com incidente'"
+            :validModalIncident="true" :data-device="getDeviceIncidentLength">
+          </LazySlideDevice>
+        </ClientOnly>
       </template>
 
     </LazyDashboardContentRegisterMobile>
@@ -126,80 +130,79 @@ const getDeviceProtectLength = computed(() => storeDevice.deviceArray);
 const getDeviceIncidentLength = computed(() => storeDevice.deviceArrayIncident);
 
 //hooks lifecycle
-onBeforeMount(async () => {
+onMounted(async () => {
   hasPinNumber.value = useCookie('hasPin').value as unknown as boolean;
   let msg = ''
-  if (process.client) {
-    try {
-      const docId: any = getUserLogged?.cpf
 
-      //checa se cpf existe no cookie
-      if (docId === '') {
-        toast.error('Não foi possivel buscar os dispositivos, pois você não está logado no painel', {
+  try {
+    const docId: any = getUserLogged?.cpf
+
+    //checa se cpf existe no cookie
+    if (docId === '') {
+      toast.error('Não foi possivel buscar os dispositivos, pois você não está logado no painel', {
+        timeout: 2000,
+        position: POSITION.TOP_RIGHT
+      });
+
+    }
+    if (process.client) {
+      await storeDevice.getAllDeviceByDocId(docId)
+      await storeDevice.getAllDeviceIncidentBy(docId);
+      await getCustomer(docId, getUserLogged.email ?? '');
+    }
+
+
+
+  } catch (error: any) {
+    console.log(error.response)
+
+    if (error.response === undefined) {
+      toast.error('Error ao conectar com nossos serviços ', {
+        timeout: 2000,
+        position: POSITION.TOP_RIGHT,
+      });
+      return
+    }
+
+    switch (error.response?.status) {
+      case 401:
+        toast.error('Não foi possivel encontrar dispositivos cadastrados', {
           timeout: 2000,
           position: POSITION.TOP_RIGHT
         });
-
-      }
-      if (process.client) {
-        await storeDevice.getAllDeviceByDocId(docId)
-        await storeDevice.getAllDeviceIncidentBy(docId);
-        await getCustomer(docId, getUserLogged.email ?? '');
-      }
-
-
-
-    } catch (error: any) {
-      console.log(error.response)
-
-      if (error.response === undefined) {
-        toast.warning('Error ao conectar com nossos serviços ', {
+        break;
+      case 404:
+        // if (error.response['_data']?.message.trim() === 'Incident not Found') {
+        //   toast.warning('Sem dispositivos com incidente', {
+        //     timeout: 2000,
+        //     position: POSITION.TOP_RIGHT,
+        //   });
+        // }
+        toast.info('Sem dispositivos com incidente', {
           timeout: 2000,
           position: POSITION.TOP_RIGHT,
         });
-        return
-      }
-
-      switch (error.response?.status) {
-        case 401:
-          toast.warning('Não foi possivel encontrar dispositivos cadastrados', {
-            timeout: 2000,
-            position: POSITION.TOP_RIGHT
-          });
-          break;
-        case 404:
-          // if (error.response['_data']?.message.trim() === 'Incident not Found') {
-          //   toast.warning('Sem dispositivos com incidente', {
-          //     timeout: 2000,
-          //     position: POSITION.TOP_RIGHT,
-          //   });
-          // }
-          toast.warning('Sem dispositivos com incidente', {
-            timeout: 2000,
-            position: POSITION.TOP_RIGHT,
-          });
-          break;
-        default:
-          toast.warning(error.response['_data']?.message, {
-            timeout: 2000,
-            position: POSITION.TOP_RIGHT,
-          });
-      }
-
-
-
+        break;
+      default:
+        toast.warning(error.response['_data']?.message, {
+          timeout: 2000,
+          position: POSITION.TOP_RIGHT,
+        });
     }
 
 
-    if (
-      !hasPinNumber.value
-    ) {
-      setTimeout(() => {
-        modalPin.value = true;
-      }, 800);
-    }
-    return
+
   }
+
+
+  if (
+    !hasPinNumber.value
+  ) {
+    setTimeout(() => {
+      modalPin.value = true;
+    }, 800);
+  }
+
 });
 </script>
 

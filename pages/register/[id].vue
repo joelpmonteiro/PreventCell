@@ -141,6 +141,7 @@ import { validateCustomer } from '../../util/validData';
 import useHandler from '~/composables/composablesServices'
 import { useScreenWidth } from '~/composables/screen-width';
 import useCep from '../../composables/services-cep'
+import { useStore } from '../../store/auth';
 definePageMeta({
     layout: 'custom-layout',
 });
@@ -153,6 +154,7 @@ const { getCep } = useCep()
 //useRoute
 const router = useRouter();
 const route = useRoute();
+const { getCustomer, getUserLogged } = useStore()
 const { tokenId } = route?.params || {};
 
 //toast
@@ -199,6 +201,8 @@ const register_customer = async () => {
                 position: POSITION.TOP_RIGHT
             });
 
+            await getCustomer(cpfWithPoints, getUserLogged?.email as string);
+
             setTimeout(() => {
                 router.push('/dashboard/home');
             }, 800)
@@ -209,7 +213,6 @@ const register_customer = async () => {
             })
         }
     } catch (error: any) {
-        console.log(error.response['_data'])
         if (error.response !== undefined && error.response['_data'].trace.code === "23505" && error.response['_data'].trace.length === 159) {
             toast.warning('Já Existe um cpf cadastrado', {
                 timeout: 2000,
@@ -228,21 +231,18 @@ const register_customer = async () => {
 const cep = async () => {
     const cpf: string = user_costumes.value.cep.replace('-', '');
     const data = await getCep(cpf);
-    console.log(data)
 
     user_costumes.value.city = data.value.city;
-    user_costumes.value.address = `${data.value.street} - ${data.value.neighborhood} - ${data.value.state}`;
+    user_costumes.value.address = `${data.value.street} - ${data.value.neighborhood}`;
     user_costumes.value.uf = data.value.state;
 }
 //ending call function
 
 //beforeMounted
 watch(() => route.params.id, async id => {
-    console.log('watch: ', id);
     cpf.value = id as string;
 })
 onBeforeMount(() => {
-    console.log("beforeMounted", route.params.id as string)
     if (useCookie('cpf').value) {
         cpf.value = useCookie('cpf')?.value ?? ''
     }

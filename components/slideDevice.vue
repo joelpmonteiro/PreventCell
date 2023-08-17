@@ -13,15 +13,17 @@
 
       <main>
         <div class="device">
-          <img :src="typeImg(value)" alt="modelo de telefone" />
+          <img src="~/assets/img/smartmockups_lkml0iyz_2.svg" alt="modelo de telefone"
+            v-if="value.deviceBrand?.toLocaleUpperCase() === 'apple'.toUpperCase() || value.brand?.toLocaleUpperCase() === 'apple'.toUpperCase()" />
 
+          <img src="~/assets/img/smartmockups_lkml2uwz_2_other.svg" alt="modelo de telefone" v-else>
           <div class="info" :class="{ 'info-inc': !validHeaderCard }">
             <h2 v-if="validHeaderCard">
               {{ value.deviceModel }}
             </h2>
 
             <div v-else class="device-incident">
-              <img :src="typeImg(value)" alt="restrito" />
+              <!-- <img :src="`~/assets/img/${typeImg(value)}`" alt="restrito" /> -->
               <h2 class="text-uppercase">Dispositivo Restrito</h2>
             </div>
 
@@ -122,7 +124,7 @@ const clickRemoveDevice = (event: boolean) => {
 
 };
 
-const typeImg = (value: IDevice) => value.deviceBrand?.toLocaleUpperCase() === 'apple'.toUpperCase() || value.brand?.toLocaleUpperCase() === 'apple'.toUpperCase() ? '../assets/img/smartmockups_lkml0iyz_2.svg' : '../assets/img/smartmockups_lkml2uwz_2_other.svg';
+const typeImg = (value: IDevice) => value.deviceBrand?.toLocaleUpperCase() === 'apple'.toUpperCase() || value.brand?.toLocaleUpperCase() === 'apple'.toUpperCase() ? '~/assets/img/smartmockups_lkml0iyz_2.svg' : '~/assets/img/smartmockups_lkml2uwz_2_other.svg';
 // ending function
 
 //computed

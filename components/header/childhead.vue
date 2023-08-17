@@ -27,7 +27,7 @@
                 </li>
                 <li class="item fs-6">
                     <!-- <a href="#Contato">Contato</a> -->
-                    <NuxtLink :to="{ path: '/', hash: '#Contato' }">Contato</NuxtLink>
+                    <NuxtLink :to="{ path: '/', hash: '#contato' }">Contato</NuxtLink>
                 </li>
             </ul>
             <button class="btn-login fs-6" type="button" @click.prevent="$emit('open-child-modal', true)">
@@ -154,6 +154,7 @@ header {
     font-size: 1.5rem;
     line-height: 27px;
     padding: 0 88px;
+    background: v-bind("styleTypeRouter.background");
 
     .logo {
         color: v-bind("styleTypeRouter.colorLogo");

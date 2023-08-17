@@ -46,7 +46,7 @@
         <div class="flex-center">
           <div class="form-group">
             <label for="imei">Digite o código PIN para continuar</label>
-            <input type="password" v-model="device.pin" name="imei" placeholder="Pin de segurança" />
+            <input type="password" v-model="device.pin" maxlength="4" name="imei" placeholder="Pin de segurança" />
           </div>
         </div>
 
@@ -115,14 +115,16 @@ const blockPin = () => {
     html: `
             <span>Entre em contato com a central de atendimento para recuperar o acesso.</span>
             <div class='pinblock-swal'> 
-            <img src='../../assets/img/call_black.svg' alt='telefone'/> <h2>(11) 4321-5678</h2>
+            <img src='../../../assets/img/call_black.svg' alt='telefone'/> <h2>(11) 4321-5678</h2>
             </div>
           `,
-    imageUrl: `../../assets/img/blockPin.svg`,
+    imageUrl: `../../../assets/img/blockPin.svg`,
     imageWidth: 41,
     imageHeight: 41,
     imageAlt: 'Pin Bloqueado',
-  });
+  }).then(async () => {
+    await closeDashboard(router)
+  })
 
 }
 
@@ -148,7 +150,6 @@ const removeDevice = async () => {
 
       if (count.value >= 3) {
         blockPin();
-        await closeDashboard(router)
 
       }
 
@@ -167,18 +168,18 @@ const removeDevice = async () => {
     }
   } catch (error: any) {
     if (count.value >= 3) {
-      blockPin(); await closeDashboard(router)
+      blockPin();
     }
     console.error(error.response);
     if (error.response !== undefined) {
       if (error.response.status === 401) {
-        toast.warning(error.response['_data'].message, {
+        toast.info(error.response['_data'].message, {
           timeout: 3000,
           position: POSITION.TOP_RIGHT,
         });
       } else if (error.response.status === 400 && error?.code === 400) {
         console.warn('pin block', error)
-        blockPin(); await closeDashboard(router)
+        blockPin();
       } else {
         toast.error(error.response['_data'].message, {
           timeout: 2000,

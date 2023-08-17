@@ -26,7 +26,6 @@ defineProps({
 
 //Call function
 const addDevice = () => {
-    console.log('evento')
     //activeModalsheet.value = !activeModalsheet.value;
 };
 

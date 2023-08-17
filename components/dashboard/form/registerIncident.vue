@@ -17,7 +17,7 @@
       <form action="post" ref="formRef" @submit.prevent="createIncident">
         <div class="form-group">
           <label for="model">Digite o código PIN para confirmar o incidente</label>
-          <input type="password" v-model="device.pin" name="model" placeholder="Digite o Pin" />
+          <input type="password" maxlength="4" v-model="device.pin" name="model" placeholder="Digite o Pin" />
           <span class="info" v-if="count !== 3">O PIN tem 4 dígitos</span>
           <span class="error" v-else>PIN incorreto. Após 3 tentativas, o código será bloqueado</span>
         </div>
@@ -58,8 +58,6 @@ export default defineComponent({
 
     const createIncident = async () => {
       try {
-        console.log('device:', props.deviceId)
-        console.log('device1:', itemSelect.value.deviceId)
 
         //const pinStorage: any = localStorage.getItem('pin') !== undefined ? JSON.parse(localStorage.getItem('pin') || '') : ''
         const cpf: string | any = getUserLogged?.cpf

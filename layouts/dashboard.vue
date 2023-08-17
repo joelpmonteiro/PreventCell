@@ -51,6 +51,7 @@ export default defineComponent({
     header {
         padding: 0 80px 0 74px;
         height: 88px;
+        background: transparent;
     }
 }
 

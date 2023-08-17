@@ -52,6 +52,11 @@
             z-index: 1;
 
             .flex-group {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 5px;
+
                 .phone {
                     font-style: normal;
                     font-weight: 600;

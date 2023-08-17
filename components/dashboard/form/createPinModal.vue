@@ -18,12 +18,13 @@
             <form action="post">
                 <div class="form-group">
                     <label for="pin">Escolha um PIN*</label>
-                    <input type="password" class="pad" v-model="dadosPin.pin" name="pin" placeholder="Digite o codigo PIN*">
+                    <input type="password" class="pad" v-model="dadosPin.pin" maxlength="4" name="pin"
+                        placeholder="Digite o codigo PIN*">
                 </div>
 
                 <div class="form-group">
                     <label for="remakepin">Digite novamente o PIN*</label>
-                    <input type="password" class="pad" name="remakepin" v-model="dadosPin.repeatPin"
+                    <input type="password" class="pad" name="remakepin" maxlength="4" v-model="dadosPin.repeatPin"
                         placeholder="Repita o codigo PIN*">
                 </div>
 

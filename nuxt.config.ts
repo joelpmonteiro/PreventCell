@@ -1,14 +1,16 @@
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
-  devtools: { enabled: false },
+  ssr: true,
+  devtools: { enabled: true },
   // alias: {
   //   "@": resolve(__dirname, "/"),
   // },
   modules: [
     // ...
     '@pinia/nuxt',
+    '@nuxt/image',
+
   ],
   build: {
     // vue-toastification - old commonjs module 

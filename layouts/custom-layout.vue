@@ -13,7 +13,6 @@ export default defineComponent({
         const route = useRoute();
         const { tokenId } = route?.params || {};
 
-        console.log('routeee: ', tokenId)
         // variable
         const rootColor = ref();
 
@@ -25,7 +24,7 @@ export default defineComponent({
         }
 
         const styleTypeRouter = computed(() => {
-            return route.name === 'register-id' ? { height: '96px', colorLogo: 'black' } : { height: '88px', colorLogo: 'white' };
+            return route.name === 'register-id' ? { height: '96px', colorLogo: 'black', background: 'transparent' } : { height: '88px', colorLogo: 'white' };
         })
         const headerTypeRouter = computed(() => ['email-id', 'password-new-pwd-id', 'password-recovery-id'].includes(route.name ? route.name?.toString() : '') ? { check: true, color: '#E8E8E8' } : { check: false, color: '#F9F9FB' })
 

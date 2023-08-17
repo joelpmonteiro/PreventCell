@@ -1,8 +1,9 @@
 import { JSONResponse } from "../interfaces/ITypeResponse";
 import { IUseAuthStore, IUser, IUserCustomer } from "interfaces/IUseAuthStore";
 import axios from "axios"
-import { IDefinePin } from "interfaces/IPin";
-const api = 'http://localhost:3333/Prod'
+import { IDefinePin, IValidateAccount } from "interfaces/IPin";
+//const api = 'http://localhost:3333/Prod'
+const api = "https://hw1cepyr3g.execute-api.sa-east-1.amazonaws.com/Prod";
 
 //axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 // const api2 = axios.create({
@@ -15,7 +16,8 @@ export default function useHandler() {
         createCustomer,
         changePassword,
         createPin,
-        validatePin
+        validatePin,
+        validateAccount
     }
 
 }
@@ -99,6 +101,26 @@ async function validatePin({ docId, pinNumber }: IDefinePin): Promise<any> {
             body: {
                 docId: docId,
                 pinNumber: pinNumber
+            }, // body data type must match "Content-Type" header
+
+        })
+        //return { data, status };
+    } catch (error) {
+        console.log('error: composables: ', error)
+        throw error
+    }
+}
+
+async function validateAccount({ email, code }: IValidateAccount): Promise<any> {
+    try {
+        return await $fetch(`${api}/login/validate`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: {
+                hashValidate: code,
+                email: email
             }, // body data type must match "Content-Type" header
 
         })

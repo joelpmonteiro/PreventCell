@@ -18,7 +18,7 @@
                 </div>
 
                 <div class="btn-protect">
-                    <button type="button" class="btn-primary" @click="$emit('open-btn', true)">
+                    <button type="button" class="btn-primary text-uppercase" @click="$emit('open-btn', true)">
                         Quero me Proteger
                     </button>
 
@@ -39,7 +39,7 @@
 const route = useRoute();
 
 const styleTypeRouter = computed(() => {
-    return route.path === '/register' ? { height: '96px', colorLogo: 'black' } : { height: '88px', colorLogo: 'white' };
+    return route.name === 'register-id' ? { height: '96px', colorLogo: 'black', background: 'transparent' } : { height: '88px', colorLogo: 'white', background: 'rgba(7, 22, 32, 0.7)' };
 })
 </script>
 <style lang="scss">

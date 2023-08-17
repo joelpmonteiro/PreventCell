@@ -3,7 +3,6 @@ export function useScreenWidth() {
 
   onBeforeMount(() => {
     screen.value = window.innerWidth;
-    console.log(screen.value);
     window.addEventListener("resize", onResize);
   });
 

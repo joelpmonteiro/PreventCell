@@ -60,6 +60,6 @@ Mas seria bom informar que o campo de complemento é opcional, já que é o úni
 • Incluir ZipCode no cadastro de customer.   --> ✅
 • Testar o hasPinNumber para aparacer Model quando estiver em "False".   --> ✅
 • Validate codigo da Conta, é caso ocorrer erro do usuario nao ativar a conta na hora, o sistema forçar a Model de Pin Code aparecer.   --> ✅
-• Fechar as Modais de Remover dispositivo e as demais*
+• Fechar as Modais de Remover dispositivo/Registrar incidente e as demais*
 • Subir o código.
 
