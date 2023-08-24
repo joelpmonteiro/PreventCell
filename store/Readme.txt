@@ -1,6 +1,6 @@
-1- Fluxo cadastro de customer(usuario)
-    - terminando cadastro de customer -> leva para a pagina da home.
-    - primeiro login, verificar se existe dados(customer) do usuário.
+1- Fluxo cadastro de customer(usuario) -> ✅
+    - terminando cadastro de customer -> leva para a pagina da home. -> ✅
+    - primeiro login, verificar se existe dados(customer) do usuário.  -> ✅
     - 
 2- incident dispisitivo com a mesma imagem  -> ✅
 
@@ -9,18 +9,18 @@
 Pagina Perfil.
 
 * Verficar o formato da data de nascimento  -> ✅ 
-* Puxar o e-mail da conta logada.
-* Pegar o telefone celular do dispositivo registrado como seguro.
-* adicionaar borda cinza nos inputs 
+* Puxar o e-mail da conta logada. --> ✅
+* Pegar o telefone celular do dispositivo registrado como seguro. --> ❓-> Pegar so 1 telefone uma unica vez
+* adicionaar borda cinza nos inputs --> ✅ 
 
 
 - Tela confirmação de código e-mail -> ✅
 - CEP complete seu cadastro puxar API -> ✅
 - Máscara CEP -> ✅
-- Ao completar cadastro, redirecionar para home com usuário logado;
+- Ao completar cadastro, redirecionar para home com usuário logado; --> ✅
 - CPF podendo ser cadastrado por qualquer um; *futuro
-- informações do Perfil não carregam;
-- subir sistema para o domínio;
+- informações do Perfil não carregam; --> ✅
+- subir sistema para o domínio; --> ✅
 - criar swagger para eu testar;
 
 
@@ -60,6 +60,11 @@ Mas seria bom informar que o campo de complemento é opcional, já que é o úni
 • Incluir ZipCode no cadastro de customer.   --> ✅
 • Testar o hasPinNumber para aparacer Model quando estiver em "False".   --> ✅
 • Validate codigo da Conta, é caso ocorrer erro do usuario nao ativar a conta na hora, o sistema forçar a Model de Pin Code aparecer.   --> ✅
-• Fechar as Modais de Remover dispositivo/Registrar incidente e as demais*
-• Subir o código.
-
+• Fechar as Modais de Remover dispositivo/Registrar incidente e as demais*  --> ✅
+• Subir o código.  --> ✅
+• botão de remover dispositivos está com hover diferente  --> ✅
+• Select da operadora --> ✅
+• Corrigir Erro de Logar/Ser redirecionado para rota de cadastro de dados sem ter uma conta
+• Impedir que uma pessoa sem conta entre na rota de Cadastro de usuario, pegar o token e fazer um middleware
+• Bloquear sempre o botão ao clicar uma vez (de Login e o resto.).
+• Cpf no campo de registro nao aparece.

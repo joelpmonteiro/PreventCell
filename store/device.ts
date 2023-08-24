@@ -2,7 +2,6 @@ import { ICustomer, IDevice, IDeviceIncident } from "interfaces/IDevice";
 import { defineStore } from "pinia";
 import { useToast, POSITION } from "vue-toastification";
 
-//const api = "http://localhost:3333/Prod";
 const api = "https://hw1cepyr3g.execute-api.sa-east-1.amazonaws.com/Prod";
 const toast = useToast();
 
@@ -69,7 +68,7 @@ export const useDeviceStore = defineStore("device", () => {
    * @returns {Promise<JSONResponse>}
    */
   async function addDeviceStore(device: IDevice) {
-    const response: any = await $fetch(`${api}/device/register`, {
+    await $fetch(`${api}/device/register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,11 +86,19 @@ export const useDeviceStore = defineStore("device", () => {
         telcomName: device.telcomName,
       }, // body data type must match "Content-Type" header
     });
-
-    const phone = useCookie<string>('phone')
-    phone.value = device.devicePhoneNumber
+    if (useCookie<string>('phone').value === undefined && useCookie<string>('phone').value === '') {
+      const phone = useCookie<string>('phone')
+      phone.value = device.devicePhoneNumber
+    }
   }
+  function getIMEIExist(device: IDevice): Boolean {
+    let item = false;
+    if (deviceArray.value.length > 0 || deviceArrayIncident.value.length > 0) {
+      item = deviceArray.value.find((value: IDevice) => value.imei === device.imei)?.imei ? true : false || deviceArrayIncident.value.find((value: IDevice) => value.deviceIMEI === device.imei)?.deviceIMEI ? true : false;
+    }
+    return item
 
+  }
   async function editDeviceStore(device: IDevice, elementIndex: number) {
     deviceSelected.value = device;
     deviceArray.value[elementIndex] = device;
@@ -103,6 +110,7 @@ export const useDeviceStore = defineStore("device", () => {
   }
 
   async function addDeviceIncident(device: IDevice, cpf: string) {
+
     await $fetch(`${api}/incident/create-incident`, {
       method: "POST",
       headers: {
@@ -213,5 +221,6 @@ export const useDeviceStore = defineStore("device", () => {
     deviceSelectEmpty,
     getAllDeviceByDocId,
     getAllDeviceIncidentBy,
+    getIMEIExist
   };
 });

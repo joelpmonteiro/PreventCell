@@ -1,10 +1,19 @@
 <template>
   <LazyBaseModalDevice :active-bottom-sheet="activeBottomSheet" @close-modal="$emit('close-modal', false)"
-    :class-custom="[]">
+    :class-custom="['modal-pin']">
     <template v-slot:header>
       <header>
         <div class="close">
-          <a @click.prevent="$emit('close-modal')"> Cancelar </a>
+          <a @click.prevent="$emit('close-modal')">
+            <span class="close-text">Cancelar</span>
+            <span class="close-icon-model">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.9844 1.42188L8.40625 7L13.9844 12.5781L12.5781 13.9844L7 8.40625L1.42188 13.9844L0.015625 12.5781L5.59375 7L0.015625 1.42188L1.42188 0.015625L7 5.59375L12.5781 0.015625L13.9844 1.42188Z"
+                  fill="#6E6E6E" />
+              </svg>
+            </span>
+          </a>
         </div>
 
         <div class="title">
@@ -22,7 +31,10 @@
           <span class="error" v-else>PIN incorreto. Após 3 tentativas, o código será bloqueado</span>
         </div>
 
-        <button class="btn-secondary btn-color-secondary text-uppercase">Salvar</button>
+        <div class="btnSpinner">
+          <LazyIconsSpinner v-if="spinner" class="readjust-pin" :className="className"></LazyIconsSpinner>
+          <button class="btn-secondary btn-color-secondary text-uppercase">Confirmar</button>
+        </div>
       </form>
     </template>
   </LazyBaseModalDevice>
@@ -39,6 +51,7 @@ export default defineComponent({
   props: {
     activeBottomSheet: { type: Boolean, default: false, required: true },
     itemSelect: { type: Object as PropType<IDevice>, default: false, required: true },
+    className: { type: String, default: '' },
   },
   setup(props: any, { emit }: any) {
 
@@ -48,7 +61,7 @@ export default defineComponent({
 
     const { $swal }: any = useNuxtApp()
     const deviceStore = useDeviceStore();
-
+    const spinner = ref<Boolean>(false)
     const count = ref<number>(0)
     const device = ref<{ pin: string }>({
       pin: ''
@@ -58,7 +71,7 @@ export default defineComponent({
 
     const createIncident = async () => {
       try {
-
+        spinner.value = true
         //const pinStorage: any = localStorage.getItem('pin') !== undefined ? JSON.parse(localStorage.getItem('pin') || '') : ''
         const cpf: string | any = getUserLogged?.cpf
         await useComposables.validatePin({ docId: cpf, pinNumber: device.value.pin })
@@ -120,10 +133,12 @@ export default defineComponent({
           timeout: 2000,
           position: POSITION.TOP_RIGHT
         })
+      } finally {
+        spinner.value = false
       }
     }
 
-    return { device, createIncident, itemSelect, count }
+    return { device, createIncident, itemSelect, count, spinner }
   }
 })
 </script>
@@ -138,10 +153,15 @@ export default defineComponent({
     font-weight: 400;
     line-height: 15px;
     letter-spacing: 0.25px;
+    margin-left: 0.85rem;
   }
 
   &>.error {
     color: $colorError;
   }
+}
+
+.btnSpinner {
+  display: flex;
 }
 </style>

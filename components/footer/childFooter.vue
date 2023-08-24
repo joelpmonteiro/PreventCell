@@ -27,9 +27,9 @@
                 <li class="item-menu">
                     <a href="" class="text-uppercase">Política de Privacidade</a>
                 </li>
-                <li class="item-menu">
+                <!-- <li class="item-menu">
                     <a href="" class="text-uppercase">Trabalhe Conosco</a>
-                </li>
+                </li> -->
             </ul>
 
             <div class="media-socials">

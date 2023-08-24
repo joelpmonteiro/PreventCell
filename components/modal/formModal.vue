@@ -1,6 +1,6 @@
 <template >
-    <LazyBaseModal :nameBtn="'Criar Conta'" :checkBtnValid="checkValid" :actionBtn="sucessAccount"
-        :typeModal="sucessAccount ? 'confirmAccount' : ''" @form-action="createRegister"
+    <LazyBaseModal :nameBtn="'Criar Conta'" :checkBtnValid="checkValid" :spinner="clickBtnSpinner" className="left"
+        :actionBtn="sucessAccount" :typeModal="sucessAccount ? 'confirmAccount' : ''" @form-action="createRegister"
         :class="[openModal ? classModal : '']" @close-modal="closeModal">
         <!-- Criar conta-->
         <template v-slot:header v-if="!sucessAccount">
@@ -172,6 +172,7 @@ const checkValid = ref<boolean>(false);
 const sucessAccount = ref(false)
 const mailSave = useCookie('mailSave')
 const nextInput = ref<HTMLElement[]>([])
+const clickBtnSpinner = ref<boolean>(false)
 const checkCode = ref<{
     in0: number | string,
     in1: number | string,
@@ -203,7 +204,7 @@ async function createRegister(form: any) {
         // if (cpf.value !== undefined || cpf.value !== null) {
 
         // }
-
+        clickBtnSpinner.value = true
         const cpfWithPoints: any = cpf.value.match(/\d/g)?.join("");
 
         const data = await createAccount({
@@ -248,6 +249,8 @@ async function createRegister(form: any) {
             });
         }
 
+    } finally {
+        clickBtnSpinner.value = true
     }
 }
 
@@ -255,6 +258,7 @@ async function validaCode() {
     if (checkCode.value.in0 && checkCode.value.in1 && checkCode.value.in2 && checkCode.value.in3 && checkCode.value.in4 && checkCode.value.in5) {
         try {
             const mail = useCookie('mailSave').value as string
+            console.log(mail)
             await validateAccount({ email: mail, code: checkCode.value.in0 + "" + checkCode.value.in1 + "" + checkCode.value.in2 + "" + checkCode.value.in3 + "" + checkCode.value.in4 + "" + checkCode.value.in5 });
             toast.success("Cadastro feito com sucesso", {
                 timeout: 2000,
@@ -265,7 +269,9 @@ async function validaCode() {
                 emit('open-child-modal', true)
             }, 800)
             useCookie('mailSave').value = null;
-        } catch (error) {
+        } catch (error: any) {
+            console.log(error)
+            //console.log(error.response)
             toast.error("Erro ao validar Conta!", {
                 timeout: 2000,
                 position: POSITION.TOP_RIGHT
@@ -289,6 +295,7 @@ const closeModal = () => {
     //$emit('close-modal', false)
     emit('close-modal', false);
     sucessAccount.value = false;
+    clickBtnSpinner.value = false
 }
 
 </script>

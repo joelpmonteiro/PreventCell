@@ -1,8 +1,10 @@
 <template>
   <div class="custom-select" :tabindex="tabindex" @blur="open = false">
     <div class="selected" id="gender" :class="{ open: open }" @click="open = !open">
-      <!-- <label for="gender">Selecione o genêro</label> -->
-      {{ selected }}
+      <label class="label_floating" v-if="selected === ''">{{ defaultItem }}</label>
+      <span v-else>
+        {{ selected }}
+      </span>
     </div>
     <div class="items" :class="{ selectHide: !open }">
       <div v-for="(option, i) of options" :key="i" @click="selected = option;
@@ -32,7 +34,7 @@ export default defineComponent({
 
     //variable
     const selected = ref<String | any>("");
-    selected.value = defaultItem.value ? defaultItem.value : options.value.length > 0 ? options.value[0] : null
+    //selected.value = options.value.length > 0 ? options.value[0] : null
     const open = ref<boolean>(false)
 
     return { selected, open }
@@ -56,6 +58,7 @@ export default defineComponent({
     padding-left: 0.75rem;
     cursor: pointer;
     user-select: none;
+    height: 100%;
 
     &.open {
       outline: 2px solid $subtitleColor;
@@ -102,5 +105,36 @@ export default defineComponent({
 
 .selectHide {
   display: none;
+}
+
+.selected:focus+.label_floating {
+  top: 0;
+  font-size: 0.7rem;
+  margin-bottom: 32px;
+}
+
+.custom-select {
+  .label_floating {
+    position: absolute;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    top: 0.7rem;
+    left: 0.85rem;
+    padding: 0;
+    transition: top 0.2s;
+    height: auto;
+    width: auto !important;
+
+  }
+
+  >.selected:not(:placeholder-shown)~.label_floating {
+    top: 0;
+    margin-bottom: 32px;
+    font-size: 0.7rem;
+  }
+
 }
 </style>

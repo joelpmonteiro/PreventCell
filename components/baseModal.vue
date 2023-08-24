@@ -28,6 +28,7 @@
                         <slot name="body"></slot>
 
                         <div class="btnBody" v-if="!actionBtn">
+                            <LazyIconsSpinner v-if="spinner" :className="className"></LazyIconsSpinner>
                             <button type="submit" class="btnModal btn-primary text-uppercase" :disabled="!checkBtnValid"> {{
                                 nameBtn }}</button>
                         </div>
@@ -57,6 +58,9 @@ defineProps({
     actionBtn: { type: Boolean, required: true },
     typeModal: { type: String, required: true },
     checkBtnValid: { type: Boolean, default: false },
+    spinner: { type: Boolean, required: true },
+    className: { type: String, default: '' },
+
 })
 
 
@@ -73,13 +77,13 @@ const form = ref()
     display: none;
     position: fixed;
     z-index: 2;
-    padding-top: 80px;
+    padding: 10px 0;
     left: 0;
     top: 0;
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: overlay;
     background-color: rgba(0, 0, 0, 0.4);
 
 
@@ -99,6 +103,7 @@ const form = ref()
         background-color: $modelsMobile;
 
         box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.10);
+
         -webkit-animation-name: animatetop;
         -webkit-animation-duration: 1s;
         animation-name: animatetop;
@@ -175,7 +180,7 @@ const form = ref()
 
     @keyframes animatetop {
         from {
-            top: -5px;
+            top: -10px;
             opacity: 0
         }
 

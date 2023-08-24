@@ -17,10 +17,6 @@
                             </a>
 
                             <div class="dropdown">
-                                Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia
-                                consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
-                                Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci
-                                velit,
                                 {{ value.description }}
                             </div>
                         </li>
@@ -52,7 +48,7 @@
 </template>
 
 <script lang="ts" setup>
-import { arrayFaqs } from '~/util/faqs';
+import { arrayFaqs } from '../../util/faqs';
 
 const faqs = ref<{ title: string, description: string }[]>(arrayFaqs);
 const liActive = ref<HTMLElement[]>([]);
@@ -172,7 +168,7 @@ const array_separate = (index: number, ending: number) => faqs.value.slice(index
                         width: 100%;
                         padding: 0px 27px 0px 0px;
                         font-size: 18px;
-                        font-weight: 600;
+                        font-weight: 500;
                         text-decoration: none;
                         color: white;
                         cursor: pointer;

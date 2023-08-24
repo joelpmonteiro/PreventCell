@@ -8,10 +8,9 @@
                 <h2 class="fs-4">Como Funciona</h2>
             </div>
 
-            <span class="fs-5 word-break">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,
-                adipisci velit,
-                sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-                voluptatem.
+            <span class="fs-5 word-break">
+                Você informa o incidente com o dispositivo e nós solicitamos o bloqueio das tentativas de acesso vindas
+                deste aparelho. Em segundos, suas contas ficam totalmente protegidas.
             </span>
         </div>
 
@@ -38,7 +37,7 @@
                         <span class="models_header">iOS</span>
 
                         <div class="models_content word-break">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                            Compatível também com aplicativos nativos como Mail, Carteira, iCloud e mais
                         </div>
                     </div>
                 </div>
@@ -49,7 +48,7 @@
                         <span class="models_header">Android</span>
 
                         <div class="models_content word-break">
-                            Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit
+                            Desenvolvido para diversas marcas e modelos de celulares Android
                         </div>
                     </div>
                 </div>
@@ -94,7 +93,7 @@
                 font-style: normal;
                 font-weight: 400;
                 line-height: 26px;
-                font-variant: small-caps;
+                // font-variant: small-caps;
 
             }
 
@@ -184,6 +183,8 @@
                 border-radius: 8px;
                 padding: 48px;
                 max-width: 405px;
+                max-height: 200px;
+                min-height: 200px;
             }
 
             .android {
@@ -194,7 +195,8 @@
                 border-radius: 8px;
                 padding: 48px;
                 max-width: 405px;
-
+                max-height: 200px;
+                min-height: 200px;
 
             }
 

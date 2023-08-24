@@ -15,12 +15,14 @@ html {
 }
 
 :root {
-  --background-body: #0A1F2D;
+  --background-body: #041826;
 }
 
 .color-green {
   color: #27AE60;
 }
+
+
 
 @font-face {
   font-family: Inter;
@@ -44,13 +46,18 @@ html {
 
 @font-face {
   font-family: Inter-Bold;
-  src: url("../fonts/woff/Inter/Inter-Bold.woff2");
+  src: url("../fonts/ttf/Inter/Inter-Bold.ttf");
   font-weight: 800;
 }
 
 @font-face {
+  font-family: Inter-ExtraBold;
+  src: url("../fonts/ttf/Inter/Inter-ExtraBold.ttf");
+}
+
+@font-face {
   font-family: Inter-Black;
-  src: url("../fonts/woff/Inter/Inter-Black.woff2");
+  src: url("../fonts/ttf/Inter/Inter-Black.ttf");
 }
 
 html {
@@ -71,6 +78,9 @@ span {
 }
 
 
+.fs-0 {
+  font-size: calc(2vw + 16px + 1rem);
+}
 
 .fs-1 {
   font-size: 3.5rem;
@@ -343,4 +353,10 @@ footer {
   //     margin-bottom: 32px;
 
   // }
+}
+
+@media screen and (max-width: 600px) {
+  .text-sm-uppercase {
+    text-transform: uppercase;
+  }
 }

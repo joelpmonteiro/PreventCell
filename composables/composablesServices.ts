@@ -2,8 +2,7 @@ import { JSONResponse } from "../interfaces/ITypeResponse";
 import { IUseAuthStore, IUser, IUserCustomer } from "interfaces/IUseAuthStore";
 import axios from "axios"
 import { IDefinePin, IValidateAccount } from "interfaces/IPin";
-//const api = 'http://localhost:3333/Prod'
-const api = "https://hw1cepyr3g.execute-api.sa-east-1.amazonaws.com/Prod";
+const api = 'https://hw1cepyr3g.execute-api.sa-east-1.amazonaws.com/Prod'
 
 //axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 // const api2 = axios.create({
@@ -113,6 +112,7 @@ async function validatePin({ docId, pinNumber }: IDefinePin): Promise<any> {
 
 async function validateAccount({ email, code }: IValidateAccount): Promise<any> {
     try {
+        console.log('valores: ', email, code)
         return await $fetch(`${api}/login/validate`, {
             method: 'POST',
             headers: {

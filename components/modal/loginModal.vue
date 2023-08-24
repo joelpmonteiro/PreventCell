@@ -1,7 +1,7 @@
 <template >
-  <LazyBaseModal :nameBtn="'Entrar'" :checkBtnValid="availableProps" :actionBtn="false"
-    :class="[openModal ? classModal : '']" @form-action="login" :typeModal="'login-content'"
-    @close-modal="$emit('close-modal', false)">
+  <LazyBaseModal :nameBtn="'Entrar'" :checkBtnValid="availableProps" :spinner="clickBtnSpinner" className="''"
+    :actionBtn="false" :class="[openModal ? classModal : '']" @form-action="login" :typeModal="'login-content'"
+    @close-modal="closeSpinner">
     <template v-slot:header>
       <div class="welcome">
         <h1 class="fs-4 text-uppercase">Olá de novo!</h1>
@@ -50,6 +50,7 @@ import { useToast, POSITION } from "vue-toastification";
 definePageMeta({
   middleware: ["auth"]
 });
+const emit = defineEmits(['close-modal', 'open-btn'])
 //toast
 const toast = useToast();
 
@@ -67,7 +68,7 @@ defineProps<{
 
 const cpf = ref<string>("");
 const psswd = ref<string>("");
-
+const clickBtnSpinner = ref<boolean>(false)
 
 //computed properties
 const availableProps = computed(() => {
@@ -77,7 +78,7 @@ const availableProps = computed(() => {
 //callfunction
 const login = async (form: any) => {
   try {
-
+    clickBtnSpinner.value = true
     const cpfWithPoints: any = cpf.value.match(/\d/g)?.join("");
 
     const { data, error, execute, refresh, status } = await actionAuthen({ docId: cpfWithPoints, psswd: psswd.value });
@@ -128,7 +129,14 @@ const login = async (form: any) => {
       timeout: 2000,
       position: POSITION.TOP_RIGHT
     });
+  } finally {
+    clickBtnSpinner.value = false
   }
+}
+
+function closeSpinner() {
+  emit('close-modal', false)
+  clickBtnSpinner.value = false
 }
 
 const emptyValue = () => {

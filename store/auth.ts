@@ -5,8 +5,8 @@ import { ICustomer } from "interfaces/IDevice";
 import { useToast, POSITION } from "vue-toastification";
 import { Router } from ".nuxt/vue-router";
 
-//const api = "http://localhost:3333/Prod";
 const api = "https://hw1cepyr3g.execute-api.sa-east-1.amazonaws.com/Prod";
+
 const toast = useToast();
 
 export const useStore = defineStore("authenticated", () => {

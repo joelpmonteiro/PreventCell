@@ -8,13 +8,21 @@
             <input type="text" name="repeatPin" id="repeatPin" placeholder="Novo pin" v-model="user.repeatPin">
         </div>
 
-        <button class="btn-secondary btn-color-secondary text-uppercase" type="submit">Salvar</button>
+        <div class="btnSpinner">
+            <LazyIconsSpinner v-if="spinner" :className="className"></LazyIconsSpinner>
+            <button class="btn-secondary btn-color-secondary text-uppercase" type="submit">Salvar</button>
+        </div>
     </form>
 </template>
 
 <script lang="ts" setup>
 import { IUserChangePin } from 'interfaces/IUseAuthStore';
 import { useToast, POSITION } from 'vue-toastification';
+defineProps({
+    spinner: { type: Boolean, required: true },
+    className: { type: String, default: '' },
+})
+
 
 //hooks
 const toast = useToast()

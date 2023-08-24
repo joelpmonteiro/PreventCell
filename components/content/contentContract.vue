@@ -7,7 +7,7 @@
                     <img src="~assets/img/call.svg" alt="ligue para PreventCell">
 
                     <div class="phone fs-001">
-                        <a>(12) 3456-7890</a>
+                        <a>(11) 46734-986</a>
                     </div>
                 </div>
                 <span class="subtitle">

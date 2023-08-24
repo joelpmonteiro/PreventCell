@@ -4,10 +4,15 @@
     </main>
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 definePageMeta({
     layout: "dashboard",
 });
 </script>
 
-<style></style>
+<style scoped lang="scss">
+main {
+    min-height: calc(100vh - 88px);
+
+}
+</style>

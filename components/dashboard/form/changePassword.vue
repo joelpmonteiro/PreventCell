@@ -8,7 +8,10 @@
             <input type="text" name="repeatPwd" id="repeatPwd" placeholder="Nova senha" v-model="user.repeatPwd">
         </div>
 
-        <button class="btn-secondary btn-color-secondary text-uppercase" type="submit">Salvar</button>
+        <div class="btnSpinner">
+            <LazyIconsSpinner v-if="spinner" :className="className"></LazyIconsSpinner>
+            <button class="btn-secondary btn-color-secondary text-uppercase" type="submit">Salvar</button>
+        </div>
     </form>
 </template>
 
@@ -17,6 +20,13 @@ import { IUserChangePassword } from 'interfaces/IUseAuthStore';
 import { useStore } from '~/store/auth';
 import { useToast, POSITION } from 'vue-toastification';
 import useHandler from '~/composables/composablesServices'
+//defineProps
+defineProps({
+    spinner: { type: Boolean, required: true },
+    className: { type: String, default: '' },
+})
+
+
 //hooks
 const toast = useToast()
 const { getUserLogged } = useStore()

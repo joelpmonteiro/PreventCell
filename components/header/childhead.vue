@@ -1,7 +1,7 @@
 <template>
     <header>
         <!-- <div class="navigation-menu"> -->
-        <a class="logo fs-4">PreventCell</a>
+        <a class="logo fs-4" >PreventCell</a>
 
         <nav class="navigation" v-if="layout === 'default'" :class="{ open: activeMenu }">
             <button id="btn-mobile" type="button" @click="changeActive">
@@ -54,7 +54,7 @@
 
                 <li class="item fs-6">
                     <!-- <a href="/#ComoFunciona">Como Funciona</a> -->
-                    <LazyCustomLinksPreventLinks :mobile="true" to="/dashboard/help" :title="'Ajuda'"
+                    <LazyCustomLinksPreventLinks :mobile="true" to="/dashboard/perfil" :title="'Ajuda'"
                         :className="'linkActive'">
                     </LazyCustomLinksPreventLinks>
                 </li>

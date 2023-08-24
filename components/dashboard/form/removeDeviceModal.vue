@@ -1,14 +1,27 @@
 <template>
   <LazyBaseModalDevice :active-bottom-sheet="activeBottomSheet" @close-modal="$emit('close-modal')"
-    :class-custom="['', 'height: calc(90vh - 100px);']">
+    :class-custom="['modal-remove']">
     <template v-slot:header>
       <header>
         <div class="close">
-          <a @click.prevent="$emit('close-modal')"> Cancelar </a>
+          <a @click.prevent="$emit('close-modal')">
+            <span class="close-text">Cancelar</span>
+            <span class="close-icon-model">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.9844 1.42188L8.40625 7L13.9844 12.5781L12.5781 13.9844L7 8.40625L1.42188 13.9844L0.015625 12.5781L5.59375 7L0.015625 1.42188L1.42188 0.015625L7 5.59375L12.5781 0.015625L13.9844 1.42188Z"
+                  fill="#6E6E6E" />
+              </svg>
+            </span>
+          </a>
         </div>
 
         <div class="title">
-          <h3 class="text-uppercase">Remover Dispositivo</h3>
+          <h3 class="text-sm-uppercase">Remover Dispositivo?</h3>
+
+          <span class="text-title">
+            Removendo o dispositivo, seus acessos ficarão vulneráveis. Tem certeza que deseja continuar?
+          </span>
         </div>
       </header>
     </template>
@@ -50,9 +63,13 @@
           </div>
         </div>
 
-        <button class="btn-secondary btn-red text-uppercase" @click.prevent="removeDevice">
-          Remover Dispositivo
-        </button>
+        <div class="btnSpinner m-bottom">
+          <LazyIconsSpinner v-if="spinner" class="removeAdjust" :className="className"></LazyIconsSpinner>
+          <button class="btn-secondary btn-red text-uppercase" @click.prevent="removeDevice">
+            Remover Dispositivo
+          </button>
+        </div>
+
       </form>
     </template>
   </LazyBaseModalDevice>
@@ -70,6 +87,7 @@ const { $swal }: any = useNuxtApp()
 
 const prop = defineProps({
   activeBottomSheet: { type: Boolean, default: false, required: true },
+  className: { type: String, default: '' },
   deviceProp: {
     type: Object as PropType<IDevice>,
     default: Object as PropType<IDevice>,
@@ -101,6 +119,7 @@ const { validatePin } = useHandler();
 
 //refs
 const remDevice = ref<boolean>(false);
+const spinner = ref<Boolean>(false)
 const screen = useScreenWidth();
 
 const blockPin = () => {
@@ -131,7 +150,7 @@ const blockPin = () => {
 const removeDevice = async () => {
   try {
     //const pinStorage: any = localStorage.getItem('pin') !== undefined ? JSON.parse(localStorage.getItem('pin') || '') : ''
-
+    spinner.value = true
     if ((device.value?.deviceId !== undefined && device.value.pin !== undefined && getUserLogged?.cpf)) {
 
       const data = await validatePin({ docId: getUserLogged?.cpf, pinNumber: device.value.pin })
@@ -188,7 +207,8 @@ const removeDevice = async () => {
       }
     }
 
-
+  } finally {
+    spinner.value = false
   }
 
 };
@@ -208,8 +228,22 @@ const device = computed(() => {
   align-items: center;
   align-self: center;
   justify-content: center;
-  width: 70%;
+  width: 100%;
   height: 100%;
-  padding: 77px 0;
+  padding: 10px 0;
+
+
+}
+
+@media screen and (max-width: 600px) {
+  .flex-center {
+    width: 70%;
+    padding: 77px 0;
+
+  }
+}
+
+.btn-red:hover {
+  background: #780000;
 }
 </style>

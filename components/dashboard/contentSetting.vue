@@ -128,6 +128,7 @@ const clickActive = (index: number) => {
 
 <style scoped lang="scss">
 main {
+
     &>.perfil {
         display: flex;
         flex-direction: column;

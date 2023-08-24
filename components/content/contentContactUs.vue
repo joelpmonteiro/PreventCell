@@ -65,7 +65,7 @@
     height: 361px;
     border-radius: 8px;
     padding: 38px;
-    background-color: $modelsMobile;
+    background-color: $modalContact;
 
     .cardCallMe {
         display: flex;
